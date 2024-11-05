@@ -2,6 +2,8 @@ package pl.edu.agh.kis.pz1.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
@@ -18,14 +20,14 @@ class MyMapTest {
     @Test
     void testPutNewElement() {
         assertTrue(map.put("key1", 1)); // Adding a new element should return true
-        assertEquals(1, map.get("key1")); // Verify the element was added correctly
+        assertEquals(Integer.valueOf(1), map.get("key1")); // Verify the element was added correctly
     }
 
     @Test
     void testPutExistingElement() {
         map.put("key1", 1);
         assertFalse(map.put("key1", 2)); // Updating an existing key should return false
-        assertEquals(2, map.get("key1")); // Value should be updated to the new one
+        assertEquals(Integer.valueOf(2), map.get("key1")); // Value should be updated to the new one
     }
 
     @Test
@@ -43,7 +45,7 @@ class MyMapTest {
     @Test
     void testGetExistingElement() {
         map.put("key1", 1);
-        assertEquals(1, map.get("key1")); // Should return the correct value
+        assertEquals(Integer.valueOf(1), map.get("key1")); // Should return the correct value
     }
 
     @Test
@@ -75,7 +77,7 @@ class MyMapTest {
     @Test
     void testPutNullKey() {
         assertTrue(map.put(null, 1)); // Adding a null key should work
-        assertEquals(1, map.get(null)); // Should return the value for the null key
+        assertEquals(Integer.valueOf(1), map.get(null)); // Should return the value for the null key
     }
 
     @Test

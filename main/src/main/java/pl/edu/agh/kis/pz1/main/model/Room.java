@@ -4,6 +4,10 @@ package pl.edu.agh.kis.pz1.main.model;
 import java.time.Instant;
 import java.util.ArrayList;
 
+/**
+ * Represents a room in a hotel.
+ * Each room has specific attributes related to its location, pricing, and occupancy.
+ */
 public class Room {
     private int floorNumber;
     private int roomNumberOnFloor;
@@ -34,6 +38,14 @@ public class Room {
 
     private int lengthOfStay;
 
+    /**
+     * Constructs a new Room object with specified attributes.
+     *
+     * @param floorNumber         the floor number where the room is located
+     * @param roomNumberOnFloor   the room number within the specific floor
+     * @param price               the price per night for staying in the room
+     * @param capacity            the maximum number of guests that can stay in the room
+     */
     public Room(int floorNumber, int roomNumberOnFloor, float price, int capacity) {
         this.floorNumber = floorNumber;
         this.price = price;
