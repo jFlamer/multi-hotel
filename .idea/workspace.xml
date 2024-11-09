@@ -5,28 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/main-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.MainTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.MainTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.MainTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.MainTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/src/test/java/pl/edu/agh/kis/pz1/util/MyMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/src/test/java/pl/edu/agh/kis/pz1/util/MyMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.util.MyMapTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/surefire-reports/pl.edu.agh.kis.pz1.util.MyMapTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/test-classes/pl/edu/agh/kis/pz1/util/MyMapTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/test-classes/pl/edu/agh/kis/pz1/util/MyMapTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/utils-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,18 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "jFlamer"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jFlamer&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/jFlamer/multi-hotel.git",
-    "accountId": "8be63b9d-92ce-4b31-a4cd-999a9998800e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jFlamer/multi-hotel.git&quot;,
+    &quot;accountId&quot;: &quot;8be63b9d-92ce-4b31-a4cd-999a9998800e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -68,8 +50,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
-    "JUnit.MyMapTest.executor": "Run",
+    "Application.Main.executor": "Run",
+    "JUnit.MyMapTest.executor": "Debug",
     "JUnit.TextUtilsTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -101,7 +83,7 @@
       <recent name="pl.edu.agh.kis.pz1.util" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyMapTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.main.Main" />
       <module name="main" />
@@ -147,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MyMapTest" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MyMapTest" />
         <item itemvalue="JUnit.TextUtilsTest" />
       </list>
     </recent_temporary>
@@ -173,6 +155,7 @@
       <workItem from="1730232803363" duration="228000" />
       <workItem from="1730233070457" duration="24836000" />
       <workItem from="1730798262207" duration="1838000" />
+      <workItem from="1731140410577" duration="3676000" />
     </task>
     <servers />
   </component>
@@ -180,15 +163,11 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="hotel.floors" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/multi_hotel$MyMapTest.ic" NAME="MyMapTest Coverage Results" MODIFIED="1730463853946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

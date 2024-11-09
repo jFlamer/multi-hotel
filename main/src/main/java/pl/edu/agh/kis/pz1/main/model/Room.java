@@ -1,7 +1,10 @@
 package pl.edu.agh.kis.pz1.main.model;
 
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 /**
@@ -75,6 +78,7 @@ public class Room {
     public ArrayList<Guest> getOtherGuests() {
         return otherGuests;
     }
+    public int getRoomNumberInHotel() {return roomNumberInHotel;}
 
     public void setPrice(float price) {
         this.price = price;
@@ -96,7 +100,62 @@ public class Room {
         this.dateOfCheckin = dateOfCheckin;
     }
 
+    public void setRoomNumberInHotel(int roomNumberInHotel) {this.roomNumberInHotel = roomNumberInHotel;}
+
     public boolean isFree(){
         return mainGuest == null;
+    }
+
+    public void setFree(){
+        mainGuest = null;
+    }
+
+    public float totalPrice(){
+        float totalPrice = 0;
+        int numberOfDays = (int) ChronoUnit.DAYS.between(this.dateOfCheckin, Instant.now());
+        totalPrice = price*numberOfDays;
+        return totalPrice;
+    }
+
+    public boolean showInfo(){
+        System.out.println("Room number: " + roomNumberInHotel);
+        System.out.println("Room price: " + price);
+        System.out.println("Capacity: " + capacity);
+        if(mainGuest != null){
+            System.out.println("Room is occupied");
+            System.out.println("Main guest: " + mainGuest.getName() + " " + mainGuest.getSurname());
+            if(otherGuests != null){
+                for(Guest guest : otherGuests){
+                    System.out.println("Extra guest: " + guest.getName() + " " + guest.getSurname());
+                }
+            }
+            System.out.println("Date of checkin: " + dateOfCheckin);
+            System.out.println("Length of stay: " + lengthOfStay);
+            if(!StringUtils.isEmpty(additionalData)) {
+                System.out.println("Additional data: " + additionalData);
+            }
+        }
+        else {
+            System.out.println("Room is free");
+        }
+        return true;
+    }
+    public boolean listRoom(){
+        System.out.println("Room number: " + roomNumberInHotel);
+        if(mainGuest != null){
+            System.out.println("Room is occupied");
+            System.out.println("Main guest: " + mainGuest.getName() + " " + mainGuest.getSurname());
+            if(otherGuests != null){
+                for(Guest guest : otherGuests){
+                    System.out.println("Extra guest: " + guest.getName() + " " + guest.getSurname());
+                }
+            }
+            System.out.println("Date of checkin: " + dateOfCheckin);
+            System.out.println("Length of stay: " + lengthOfStay);
+        }
+        else {
+            System.out.println("Room is free");
+        }
+        return true;
     }
 }

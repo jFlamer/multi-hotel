@@ -9,10 +9,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
+
+/**
+ * Service class that provides functionalities to manage hotel operations,
+ * such as creating rooms, initializing a hotel, and checking in guests.
+ */
 public class HotelService {
 
+    /**
+     * Default constructor for HotelService.
+     */
     public HotelService() {}
 
+    /**
+     * Creates a random room with a specified floor and position on that floor.
+     *
+     * @param floorNumber the floor number where the room is located.
+     * @param onFloorNumber the room's position on the specified floor.
+     * @return a Room object with randomly generated properties.
+     */
     private Room createRandRoom(int floorNumber, int onFloorNumber) {
         Random random = new Random();
         Room randRoom = new Room(floorNumber, onFloorNumber,
@@ -24,6 +39,12 @@ public class HotelService {
 
     }
 
+    /**
+     * Creates a random floor with a specified floor number.
+     *
+     * @param floorNumber the floor number.
+     * @return a MyMap<Integer, Room> object containing randomly generated rooms for the floor.
+     */
     private MyMap<Integer, Room> createRandFloor(int floorNumber) {
         MyMap<Integer, Room> randFloor = new MyMap<>();
         Random random = new Random();
@@ -34,6 +55,11 @@ public class HotelService {
         return randFloor;
     }
 
+    /**
+     * Initializes a hotel with multiple floors and randomly generated rooms on each floor.
+     *
+     * @return a Hotel object populated with floors and rooms.
+     */
     public Hotel createHotel() {
         int numberOfFloors = 8;
         Hotel testHotel = new Hotel();
@@ -43,7 +69,13 @@ public class HotelService {
         return testHotel;
     }
 
-
+    /**
+     * Collects guest data for checking into a room.
+     *
+     * @param capacityOfRoom the maximum number of guests allowed in the room.
+     * @param guestNumber the number of the current guest (for display purposes).
+     * @return a Guest object containing the name and surname of the guest.
+     */
     public Guest scanGuestData(int capacityOfRoom, int guestNumber) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Provide name of guest " + guestNumber + "/" + capacityOfRoom + ": ");
@@ -57,11 +89,12 @@ public class HotelService {
     }
 
     /**
-     * Check in a guest to a room with a provided number
-     * scan data of a main guest, optionally additional guests if capacity allows
-     * mark the room as occupied and save check in date if provided else save current date.
-     * save also length of stay
-     * @return false if the room is already occupied, true if check in is possible
+     * Checks in a guest to a specified room number in the hotel.
+     * If the room is free, prompts the user to provide guest information,
+     * check-in date, length of stay, and any additional information.
+     *
+     * @param hotel the Hotel object where the guest will be checked in.
+     * @return true if the check-in is successful, false if the room is occupied or does not exist.
      */
     public boolean checkIn(Hotel hotel) {
         Scanner scanner = new Scanner(System.in);
@@ -100,5 +133,63 @@ public class HotelService {
             return false;
         }
 
+    }
+
+    public boolean checkOut(Hotel hotel) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Room number: ");
+        int roomNumber = scanner.nextInt();
+        Room currentRoom = hotel.getRoomByNumber(roomNumber);
+        if (currentRoom == null) {
+            System.out.println("Room not found");
+            return false;
+        }
+        if (!currentRoom.isFree()){
+            currentRoom.setFree();
+            currentRoom.setAdditionalData(null);
+            float totalPrice = currentRoom.totalPrice();
+            System.out.println("Total price: " + totalPrice);
+            return true;
+        }
+        else {
+            System.out.println("Room is not occupied");
+            return false;
+        }
+    }
+    public void prices(Hotel hotel) {
+        for(int i = 0; i < hotel.getFloors().size(); i++){
+            System.out.println("Floor " + i + ": ");
+            MyMap<Integer, Room> currentFloor = hotel.getFloors().get(i);
+            for(int j = 0; j < currentFloor.keys().size(); j++){
+                int roomNumber = (int)currentFloor.keys().get(j);
+                Room currentRoom = currentFloor.get(roomNumber);
+                System.out.println("Room " + currentRoom.getRoomNumberInHotel()+ " price: " + currentRoom.getPrice());
+            }
+        }
+    }
+    public boolean view(Hotel hotel) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Room number: ");
+        int roomNumber = scanner.nextInt();
+        Room currentRoom = hotel.getRoomByNumber(roomNumber);
+        if (currentRoom == null) {
+            System.out.println("Room not found");
+            return false;
+        }
+        else {
+            return currentRoom.showInfo();
+        }
+    }
+
+    public void list(Hotel hotel) {
+        for(int i = 0; i < hotel.getFloors().size(); i++){
+            System.out.println("Floor " + i + ": ");
+            MyMap<Integer, Room> currentFloor = hotel.getFloors().get(i);
+            for(int j = 0; j < currentFloor.keys().size(); j++){
+                int roomNumber = (int)currentFloor.keys().get(j);
+                Room currentRoom = currentFloor.get(roomNumber);
+                currentRoom.listRoom();
+            }
+        }
     }
 }

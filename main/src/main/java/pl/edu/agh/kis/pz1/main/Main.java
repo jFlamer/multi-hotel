@@ -14,6 +14,9 @@ public class Main {
         HotelService hotelService = new HotelService();
         Hotel hotel = hotelService.createHotel();
         hotelService.checkIn(hotel);
+        //hotelService.checkOut(hotel);
         System.out.println("OK");
+        hotelService.list(hotel);
+
     }
 }
