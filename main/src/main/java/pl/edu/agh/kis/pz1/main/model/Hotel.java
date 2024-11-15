@@ -1,5 +1,6 @@
 package pl.edu.agh.kis.pz1.main.model;
 
+import lombok.*;
 import pl.edu.agh.kis.pz1.util.MyMap;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Scanner;
  * Represents a hotel that contains multiple floors and rooms.
  * Each floor is represented by a MyMap of rooms.
  */
+@Data
 public class Hotel {
 
     /**
@@ -39,29 +41,6 @@ public class Hotel {
         }
     }
 
-    /**
-     * Gets the list of floors in the hotel.
-     *
-     * @return the ArrayList of MyMap objects representing floors and their rooms
-     */
-    public ArrayList<MyMap<Integer, Room>> getFloors() {
-        return floors;
-    }
-
-    /**
-     * Sets the list of floors in the hotel.
-     *
-     * @param floors the ArrayList of MyMap objects to set as floors
-     */
-    public void setFloors(ArrayList<MyMap<Integer, Room>> floors) {
-        this.floors = floors;
-    }
-
-    /**
-     * Returns the total number of floors in the hotel.
-     *
-     * @return the number of floors
-     */
     public int getNumberOfFloors() {
         return floors.size();
     }

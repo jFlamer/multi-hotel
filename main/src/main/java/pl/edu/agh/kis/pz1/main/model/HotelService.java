@@ -76,6 +76,33 @@ public class HotelService {
         return testHotel;
     }*/
 
+    /**
+     * This method reads hotel room data from a CSV file and populates a given `Hotel` object with the information.
+     * Each row in the CSV corresponds to a room in a hotel, including details like floor number, room number,
+     * guest information, price, check-in date, etc. It processes the CSV data and populates an `ArrayList` of `MyMap` objects
+     * representing floors, where each floor contains rooms identified by room numbers. The method also handles the conversion
+     * of CSV data to appropriate Java types, such as `Instant` for check-in dates and `ArrayList<Guest>` for guest data.
+     *
+     * The structure of the CSV file is expected to have the following columns:
+     * - Floor: The floor number where the room is located (integer).
+     * - RoomNumber: The room number (integer).
+     * - Capacity: The maximum capacity of the room (integer).
+     * - Price: The price per night for the room (float).
+     * - IsFree: Whether the room is free or not (boolean).
+     * - MainGuest: The name of the main guest in the room (String, first and last name separated by a space).
+     * - OtherGuests: A comma-separated list of other guest names (String, first and last name separated by commas).
+     * - DateOfCheckin: The check-in date (String in ISO-8601 format, e.g. "2024-11-01T12:00:00Z").
+     * - LengthOfStay: The number of nights the guest is staying (integer).
+     * - AdditionalData: Any additional data about the room (String).
+     *
+     * <p>This method handles edge cases like empty guest information, missing data, and invalid values in the CSV file.</p>
+     *
+     * @param hotel The `Hotel` object to be populated with room and guest data.
+     * @param fileName The name of the CSV file containing room data.
+     * @return The populated `Hotel` object.
+     * @throws IOException If there is an issue reading the CSV file.
+     * @throws NumberFormatException If any value in the CSV is not a valid number or boolean.
+     */
     public Hotel HotelCsv(Hotel hotel, String fileName) throws IOException {
         try (FileReader reader = new FileReader(fileName);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {
@@ -206,6 +233,16 @@ public class HotelService {
 
     }
 
+    /**
+     * Handles the checkout process for a guest staying in a room.
+     * This method prompts the user for the room number and checks if the room is occupied.
+     * If the room is occupied, it sets the room as free, clears additional data,
+     * and prints the total price for the stay. If the room is not occupied,
+     * it notifies the user accordingly.
+     *
+     * @param hotel The `Hotel` object containing the room data.
+     * @return `true` if the checkout was successful, `false` otherwise.
+     */
     public boolean checkOut(Hotel hotel) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Room number: ");
@@ -227,6 +264,13 @@ public class HotelService {
             return false;
         }
     }
+
+    /**
+     * Displays the prices of all rooms in the hotel by iterating through all floors and rooms.
+     * For each room, the floor number and the room price are printed.
+     *
+     * @param hotel The `Hotel` object containing the floors and rooms with their prices.
+     */
     public void prices(Hotel hotel) {
         for(int i = 0; i < hotel.getFloors().size(); i++){
             System.out.println("Floor " + i + ": ");
@@ -238,6 +282,16 @@ public class HotelService {
             }
         }
     }
+
+    /**
+     * Allows the user to view detailed information about a specific room.
+     * This method prompts the user for a room number and, if the room exists,
+     * it displays information about the room such as its guests, price, check-in date, etc.
+     * If the room is not found, a message is printed.
+     *
+     * @param hotel The `Hotel` object containing the rooms to be viewed.
+     * @return `true` if the room information is displayed successfully, `false` if the room is not found.
+     */
     public boolean view(Hotel hotel) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Room number: ");
@@ -252,6 +306,12 @@ public class HotelService {
         }
     }
 
+    /**
+     * Lists all rooms in the hotel, displaying information about each room in all floors.
+     * For each room, basic details like room number, capacity, and availability are shown.
+     *
+     * @param hotel The `Hotel` object containing the floors and rooms to be listed.
+     */
     public void list(Hotel hotel) {
         for(int i = 0; i < hotel.getFloors().size(); i++){
             System.out.println("Floor " + i + ": ");
@@ -264,6 +324,17 @@ public class HotelService {
         }
     }
 
+    /**
+     * Saves the current state of the hotel (including all rooms and their details) to a CSV file.
+     * The hotel data is written to the specified file in CSV format with headers:
+     * Floor, RoomNumber, Capacity, Price, IsFree, MainGuest, OtherGuests, DateOfCheckin, LengthOfStay, AdditionalData.
+     * If a room has no main guest or other guests, appropriate placeholders like "No main guest" or "No other guests" are used.
+     * The check-in date and length of stay are also handled with default placeholders if not available.
+     *
+     * @param hotel The `Hotel` object whose room and guest data is saved to the CSV.
+     * @param fileName The name of the file where the hotel data will be saved.
+     * @throws IOException If an error occurs while writing to the file.
+     */
     public void saveToCsv(Hotel hotel, String fileName) throws IOException {
         try(FileWriter fileWriter = new FileWriter(fileName);
             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader("Floor", "RoomNumber","Capacity", "Price", "IsFree", "MainGuest", "OtherGuests", "DateOfCheckin", "LengthOfStay", "AdditionalData"))){
