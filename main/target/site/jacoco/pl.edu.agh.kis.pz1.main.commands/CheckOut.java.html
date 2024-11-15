@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckOut.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">CheckOut.java</span></div><h1>CheckOut.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+import pl.edu.agh.kis.pz1.main.model.Hotel;
+import pl.edu.agh.kis.pz1.main.model.Room;
+
+import java.util.Scanner;
+
+<span class="nc" id="L8">public class CheckOut extends Command {</span>
+    @Override
+    public void execute(Hotel hotel) {
+<span class="nc" id="L11">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L12">        System.out.println(&quot;Room number: &quot;);</span>
+<span class="nc" id="L13">        int roomNumber = scanner.nextInt();</span>
+<span class="nc" id="L14">        Room currentRoom = hotel.getRoomByNumber(roomNumber);</span>
+<span class="nc bnc" id="L15" title="All 2 branches missed.">        if (currentRoom == null) {</span>
+<span class="nc" id="L16">            System.out.println(&quot;Room not found&quot;);</span>
+            //return false;
+        }
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (!currentRoom.isFree()){</span>
+<span class="nc" id="L20">            currentRoom.setFree();</span>
+<span class="nc" id="L21">            currentRoom.setAdditionalData(null);</span>
+<span class="nc" id="L22">            float totalPrice = currentRoom.totalPrice();</span>
+<span class="nc" id="L23">            System.out.println(&quot;Total price: &quot; + totalPrice);</span>
+<span class="nc" id="L24">            currentRoom.setDateOfCheckin(null);</span>
+<span class="nc" id="L25">            currentRoom.setLengthOfStay(0);</span>
+            //return true;
+<span class="nc" id="L27">        }</span>
+        else {
+<span class="nc" id="L29">            System.out.println(&quot;Room is not occupied&quot;);</span>
+            //return false;
+        }
+<span class="nc" id="L32">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
