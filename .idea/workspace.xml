@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="CSV files">
+    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="lombok">
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckIn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckOut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Exit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/HotelSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/List.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Prices.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelFromCSV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelToCSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Guest.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Guest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Hotel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/HotelService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" afterDir="false" />
@@ -275,7 +286,7 @@
       <workItem from="1730798262207" duration="1838000" />
       <workItem from="1731140410577" duration="5550000" />
       <workItem from="1731145990786" duration="2389000" />
-      <workItem from="1731661881180" duration="14575000" />
+      <workItem from="1731661881180" duration="20935000" />
     </task>
     <task id="LOCAL-00001" summary="added prices method, view, checkout, and list">
       <option name="closed" value="true" />
@@ -293,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731674219194</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="lombok">
+      <option name="closed" value="true" />
+      <created>1731676766485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731676766485</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,7 +332,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added prices method, view, checkout, and list" />
     <MESSAGE value="CSV files" />
-    <option name="LAST_COMMIT_MESSAGE" value="CSV files" />
+    <MESSAGE value="lombok" />
+    <option name="LAST_COMMIT_MESSAGE" value="lombok" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

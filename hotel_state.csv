@@ -1,0 +1,16 @@
+Floor,RoomNumber,Capacity,Price,IsFree,MainGuest,OtherGuests,DateOfCheckin,LengthOfStay,AdditionalData
+0,101,2,104.0,true,No main guest,No other guests,No date of checkin,No length of stay,
+1,101,2,100.5,true,No main guest,No other guests,No date of checkin,No length of stay,
+1,102,3,150.0,true,No main guest,Jane Smith,No date of checkin,No length of stay,No additional data
+1,103,2,100.5,false,Jan Papiez,Tomasz Karolak,2020-09-08T00:00:00Z,12,nuuh
+2,201,1,75.0,false,Mary Johnson,No other guests,2024-11-10T08:00:00Z,7,Early check-in requested
+2,202,4,200.0,false,Ada Lovelace,Grace Hopper,2024-11-13T09:00:00Z,6,Discussing algorithms
+2,203,2,100.0,true,No main guest,No other guests,No date of checkin,No length of stay,
+3,301,2,120.0,false,Princess Leia,Padmé Amidala,2024-11-14T11:00:00Z,3,Galaxy peace summit
+3,302,3,175.0,false,Princess Cinderella,Snow White,2024-11-14T15:00:00Z,4,Planning the next ball
+3,303,2,130.0,true,No main guest,No other guests,No date of checkin,No length of stay,
+4,401,1,90.0,false,Margaret Hamilton,No other guests,2024-11-15T08:00:00Z,5,Debugging Apollo software
+4,402,4,250.0,false,Shuri Princess,Princess Tiana,2024-11-16T10:00:00Z,7,Sharing tech and recipes
+4,403,3,190.0,false,Joan Clarke,Dorothy Vaughan,2024-11-17T12:00:00Z,6,Cryptography meetup
+5,501,2,140.0,false,Princess Moana,Princess Rapunzel,2024-11-18T14:00:00Z,4,Adventure planning session
+5,502,1,80.0,true,No main guest,No other guests,No date of checkin,No length of stay,

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Guest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.model</a> &gt; <span class="el_source">Guest.java</span></div><h1>Guest.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.model;
+
+import lombok.*;
+
+/**
+ * Represents a guest in the hotel system.
+ * Contains the guest's personal information such as name and surname.
+ */
+@Data
+public class Guest {
+    private String name;
+    private String surname;
+
+    /**
+     * Constructs a new Guest object with the specified name and surname.
+     *
+     * @param name    the name of the guest
+     * @param surname the surname of the guest
+     */
+<span class="fc" id="L20">    public Guest(String name, String surname) {</span>
+<span class="fc" id="L21">        this.name = name;</span>
+<span class="fc" id="L22">        this.surname = surname;</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="nc" id="L25">    public String getInfo(){ return name + &quot; &quot; + surname; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

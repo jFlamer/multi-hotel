@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HotelService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.model</a> &gt; <span class="el_source">HotelService.java</span></div><h1>HotelService.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.model;
+
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.lang3.StringUtils;
+import pl.edu.agh.kis.pz1.util.MyMap;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Random;
+
+
+/**
+ * Service class that provides functionalities to manage hotel operations,
+ * such as creating rooms, initializing a hotel, and checking in guests.
+ */
+public class HotelService {
+
+    /**
+     * Default constructor for HotelService.
+     */
+<span class="nc" id="L29">    public HotelService() {}</span>
+
+    /*/**
+     * Creates a random room with a specified floor and position on that floor.
+     *
+     * @param floorNumber the floor number where the room is located.
+     * @param onFloorNumber the room's position on the specified floor.
+     * @return a Room object with randomly generated properties.
+     */
+    /*private Room createRandRoom(int floorNumber, int onFloorNumber) {
+        Random random = new Random();
+        Room randRoom = new Room(floorNumber, onFloorNumber,
+                (((random.nextInt(40001) + 10000) / 100l)),random.nextInt(5) + 1);
+        if (floorNumber*100 + onFloorNumber == 101) {
+            randRoom.setCapacity(1);
+        }
+        return randRoom;
+
+    }
+
+    /**
+     * Creates a random floor with a specified floor number.
+     *
+     * @param floorNumber the floor number.
+     * @return a MyMap&lt;Integer, Room&gt; object containing randomly generated rooms for the floor.
+     */
+   /* private MyMap&lt;Integer, Room&gt; createRandFloor(int floorNumber) {
+        MyMap&lt;Integer, Room&gt; randFloor = new MyMap&lt;&gt;();
+        Random random = new Random();
+        int numberOfRooms = random.nextInt(21) + 1;
+        for (int i = 1; i &lt;= numberOfRooms; i++) {
+            randFloor.put(floorNumber*100 + i, createRandRoom(floorNumber, i));
+        }
+        return randFloor;
+    }
+
+    /**
+     * Initializes a hotel with multiple floors and randomly generated rooms on each floor.
+     *
+     * @return a Hotel object populated with floors and rooms.
+     */
+    /*public Hotel createHotel() {
+        int numberOfFloors = 8;
+        Hotel testHotel = new Hotel();
+        for (int i = 0; i &lt; numberOfFloors; i++) {
+            testHotel.getFloors().add(createRandFloor(i));
+        }
+        return testHotel;
+    }*/
+
+    /**
+     * This method reads hotel room data from a CSV file and populates a given `Hotel` object with the information.
+     * Each row in the CSV corresponds to a room in a hotel, including details like floor number, room number,
+     * guest information, price, check-in date, etc. It processes the CSV data and populates an `ArrayList` of `MyMap` objects
+     * representing floors, where each floor contains rooms identified by room numbers. The method also handles the conversion
+     * of CSV data to appropriate Java types, such as `Instant` for check-in dates and `ArrayList&lt;Guest&gt;` for guest data.
+     *
+     * The structure of the CSV file is expected to have the following columns:
+     * - Floor: The floor number where the room is located (integer).
+     * - RoomNumber: The room number (integer).
+     * - Capacity: The maximum capacity of the room (integer).
+     * - Price: The price per night for the room (float).
+     * - IsFree: Whether the room is free or not (boolean).
+     * - MainGuest: The name of the main guest in the room (String, first and last name separated by a space).
+     * - OtherGuests: A comma-separated list of other guest names (String, first and last name separated by commas).
+     * - DateOfCheckin: The check-in date (String in ISO-8601 format, e.g. &quot;2024-11-01T12:00:00Z&quot;).
+     * - LengthOfStay: The number of nights the guest is staying (integer).
+     * - AdditionalData: Any additional data about the room (String).
+     *
+     * &lt;p&gt;This method handles edge cases like empty guest information, missing data, and invalid values in the CSV file.&lt;/p&gt;
+     *
+     * @param hotel The `Hotel` object to be populated with room and guest data.
+     * @param fileName The name of the CSV file containing room data.
+     * @return The populated `Hotel` object.
+     * @throws IOException If there is an issue reading the CSV file.
+     * @throws NumberFormatException If any value in the CSV is not a valid number or boolean.
+     */
+    public Hotel HotelCsv(Hotel hotel, String fileName) throws IOException {
+<span class="nc" id="L107">        try (FileReader reader = new FileReader(fileName);</span>
+<span class="nc" id="L108">             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {</span>
+
+<span class="nc" id="L110">            ArrayList&lt;MyMap&lt;Integer, Room&gt;&gt; floors = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            for (CSVRecord record : csvParser) {</span>
+<span class="nc" id="L112">                int floorNumber = Integer.parseInt(record.get(&quot;Floor&quot;));</span>
+<span class="nc" id="L113">                int roomNumber = Integer.parseInt(record.get(&quot;RoomNumber&quot;));</span>
+<span class="nc" id="L114">                int capacity = Integer.parseInt(record.get(&quot;Capacity&quot;));</span>
+<span class="nc" id="L115">                float price = Float.parseFloat(record.get(&quot;Price&quot;));</span>
+<span class="nc" id="L116">                boolean isFree = Boolean.parseBoolean(record.get(&quot;IsFree&quot;));</span>
+<span class="nc" id="L117">                String mainGuestInfo = record.get(&quot;MainGuest&quot;);</span>
+<span class="nc" id="L118">                String otherGuestsInfo = record.get(&quot;OtherGuests&quot;);</span>
+<span class="nc" id="L119">                String checkInDate = record.get(&quot;DateOfCheckin&quot;);</span>
+<span class="nc" id="L120">                String lengthOfStayStr = record.get(&quot;LengthOfStay&quot;);</span>
+<span class="nc" id="L121">                String additionalData = record.get(&quot;AdditionalData&quot;);</span>
+
+<span class="nc" id="L123">                MyMap&lt;Integer, Room&gt; currentFloor = null;</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                if (floorNumber + 1 &gt; floors.size()) {</span>
+<span class="nc" id="L125">                    currentFloor = new MyMap&lt;&gt;();</span>
+<span class="nc" id="L126">                    floors.add(currentFloor);</span>
+                } else {
+<span class="nc" id="L128">                    currentFloor = floors.get(floorNumber);</span>
+                }
+
+<span class="nc" id="L131">                int lengthOfStay = 0;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">                if (!&quot; &quot;.equals(lengthOfStayStr)) {</span>
+<span class="nc" id="L133">                    lengthOfStay = Integer.parseInt(lengthOfStayStr);</span>
+                }
+
+<span class="nc" id="L136">                Guest mainGuest = null;</span>
+<span class="nc bnc" id="L137" title="All 6 branches missed.">                if (mainGuestInfo != null &amp;&amp; !mainGuestInfo.isEmpty() &amp;&amp; !&quot; &quot;.equals(mainGuestInfo)) {</span>
+<span class="nc" id="L138">                    String[] mainGuestInfoArray = mainGuestInfo.split(&quot; &quot;);</span>
+<span class="nc" id="L139">                    mainGuest = new Guest(mainGuestInfoArray[0], mainGuestInfoArray[1]);</span>
+                }
+
+<span class="nc" id="L142">                ArrayList&lt;Guest&gt; otherGuests = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L143" title="All 6 branches missed.">                if (otherGuestsInfo != null &amp;&amp; !otherGuestsInfo.isEmpty() &amp;&amp; !&quot; &quot;.equals(otherGuestsInfo)) {</span>
+<span class="nc" id="L144">                    String[] otherGuestsInfoArray = otherGuestsInfo.split(&quot;, &quot;);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">                    for (String otherGuest : otherGuestsInfoArray) {</span>
+<span class="nc" id="L146">                        String[] guestInfoArray = otherGuest.split(&quot; &quot;);</span>
+<span class="nc" id="L147">                        otherGuests.add(new Guest(guestInfoArray[0], guestInfoArray[1]));</span>
+                    }
+                }
+
+<span class="nc" id="L151">                Instant checkIn = null;</span>
+<span class="nc bnc" id="L152" title="All 6 branches missed.">                if (checkInDate != null &amp;&amp; !checkInDate.isEmpty() &amp;&amp; !&quot; &quot;.equals(checkInDate)) {</span>
+<span class="nc" id="L153">                    checkIn = Instant.parse(checkInDate);</span>
+                }
+
+<span class="nc" id="L156">                Room newRoom = new Room(floorNumber, roomNumber, price, capacity);</span>
+<span class="nc" id="L157">                newRoom.setMainGuest(mainGuest);</span>
+<span class="nc" id="L158">                newRoom.setOtherGuests(otherGuests);</span>
+<span class="nc" id="L159">                newRoom.setDateOfCheckin(checkIn);</span>
+<span class="nc" id="L160">                newRoom.setLengthOfStay(lengthOfStay);</span>
+<span class="nc" id="L161">                newRoom.setAdditionalData(additionalData);</span>
+<span class="nc" id="L162">                currentFloor.put(roomNumber, newRoom);</span>
+<span class="nc" id="L163">            }</span>
+<span class="nc" id="L164">            hotel.setFloors(floors);</span>
+        }
+<span class="nc" id="L166">        return hotel;</span>
+    }
+
+
+/**
+     * Collects guest data for checking into a room.
+     *
+     * @param capacityOfRoom the maximum number of guests allowed in the room.
+     * @param guestNumber the number of the current guest (for display purposes).
+     * @return a Guest object containing the name and surname of the guest.
+     */
+    public Guest scanGuestData(int capacityOfRoom, int guestNumber) {
+<span class="nc" id="L178">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L179">        System.out.println(&quot;Provide name of guest &quot; + guestNumber + &quot;/&quot; + capacityOfRoom + &quot;: &quot;);</span>
+<span class="nc" id="L180">        String guestName = scanner.next();</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        if (StringUtils.isEmpty(guestName)) {</span>
+<span class="nc" id="L182">            return null;</span>
+        }
+<span class="nc" id="L184">        System.out.println(&quot;Provide surname of guest &quot; + guestNumber + &quot;/&quot; + capacityOfRoom + &quot;: &quot;);</span>
+<span class="nc" id="L185">        String guestSurname = scanner.next();</span>
+<span class="nc" id="L186">        return new Guest(guestName, guestSurname);</span>
+    }
+
+    /**
+     * Checks in a guest to a specified room number in the hotel.
+     * If the room is free, prompts the user to provide guest information,
+     * check-in date, length of stay, and any additional information.
+     *
+     * @param hotel the Hotel object where the guest will be checked in.
+     * @return true if the check-in is successful, false if the room is occupied or does not exist.
+     */
+    public boolean checkIn(Hotel hotel) {
+<span class="nc" id="L198">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L199">        System.out.println(&quot;Room number: &quot;);</span>
+<span class="nc" id="L200">        int roomNumber = scanner.nextInt();</span>
+<span class="nc" id="L201">        Room currentRoom = hotel.getRoomByNumber(roomNumber);</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">        if (currentRoom == null) {</span>
+<span class="nc" id="L203">            System.out.println(&quot;Room not found&quot;);</span>
+<span class="nc" id="L204">            return false;</span>
+        }
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (currentRoom.isFree()){</span>
+<span class="nc" id="L207">            currentRoom.setMainGuest(scanGuestData(currentRoom.getCapacity(), 1));</span>
+<span class="nc" id="L208">            ArrayList&lt;Guest&gt; otherGuests = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">            for (int i = 1; i &lt; currentRoom.getCapacity(); i++) {</span>
+<span class="nc" id="L210">                otherGuests.add(scanGuestData(currentRoom.getCapacity(), i + 1));</span>
+            }
+<span class="nc" id="L212">            currentRoom.setOtherGuests(otherGuests);</span>
+<span class="nc" id="L213">            System.out.println(&quot;Date of check-in (YYYY-MM-DD): &quot;);</span>
+<span class="nc" id="L214">            String checkInDate = scanner.next() + &quot;T00:00:00Z&quot;;</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            if (StringUtils.isEmpty(checkInDate)) {</span>
+<span class="nc" id="L216">                currentRoom.setDateOfCheckin(Instant.now().truncatedTo(ChronoUnit.DAYS));</span>
+            } else {
+<span class="nc" id="L218">                currentRoom.setDateOfCheckin(Instant.parse(checkInDate));</span>
+            }
+<span class="nc" id="L220">            System.out.println(&quot;Length of stay: &quot;);</span>
+<span class="nc" id="L221">            int lengthOfStay = scanner.nextInt();</span>
+<span class="nc" id="L222">            currentRoom.setLengthOfStay(lengthOfStay);</span>
+<span class="nc" id="L223">            System.out.println(&quot;Additional info:&quot;);</span>
+<span class="nc" id="L224">            scanner.nextLine();</span>
+<span class="nc" id="L225">            String additionalInfo = scanner.nextLine();</span>
+<span class="nc" id="L226">            currentRoom.setAdditionalData(additionalInfo);</span>
+<span class="nc" id="L227">            System.out.println(&quot;Room has been successfully booked!&quot;);</span>
+<span class="nc" id="L228">            return true;</span>
+        } else {
+<span class="nc" id="L230">            System.out.println(&quot;Room is occupied&quot;);</span>
+<span class="nc" id="L231">            return false;</span>
+        }
+
+    }
+
+    /**
+     * Handles the checkout process for a guest staying in a room.
+     * This method prompts the user for the room number and checks if the room is occupied.
+     * If the room is occupied, it sets the room as free, clears additional data,
+     * and prints the total price for the stay. If the room is not occupied,
+     * it notifies the user accordingly.
+     *
+     * @param hotel The `Hotel` object containing the room data.
+     * @return `true` if the checkout was successful, `false` otherwise.
+     */
+    public boolean checkOut(Hotel hotel) {
+<span class="nc" id="L247">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L248">        System.out.println(&quot;Room number: &quot;);</span>
+<span class="nc" id="L249">        int roomNumber = scanner.nextInt();</span>
+<span class="nc" id="L250">        Room currentRoom = hotel.getRoomByNumber(roomNumber);</span>
+<span class="nc bnc" id="L251" title="All 2 branches missed.">        if (currentRoom == null) {</span>
+<span class="nc" id="L252">            System.out.println(&quot;Room not found&quot;);</span>
+<span class="nc" id="L253">            return false;</span>
+        }
+<span class="nc bnc" id="L255" title="All 2 branches missed.">        if (!currentRoom.isFree()){</span>
+<span class="nc" id="L256">            currentRoom.setFree();</span>
+<span class="nc" id="L257">            currentRoom.setAdditionalData(null);</span>
+<span class="nc" id="L258">            float totalPrice = currentRoom.totalPrice();</span>
+<span class="nc" id="L259">            System.out.println(&quot;Total price: &quot; + totalPrice);</span>
+<span class="nc" id="L260">            return true;</span>
+        }
+        else {
+<span class="nc" id="L263">            System.out.println(&quot;Room is not occupied&quot;);</span>
+<span class="nc" id="L264">            return false;</span>
+        }
+    }
+
+    /**
+     * Displays the prices of all rooms in the hotel by iterating through all floors and rooms.
+     * For each room, the floor number and the room price are printed.
+     *
+     * @param hotel The `Hotel` object containing the floors and rooms with their prices.
+     */
+    public void prices(Hotel hotel) {
+<span class="nc bnc" id="L275" title="All 2 branches missed.">        for(int i = 0; i &lt; hotel.getFloors().size(); i++){</span>
+<span class="nc" id="L276">            System.out.println(&quot;Floor &quot; + i + &quot;: &quot;);</span>
+<span class="nc" id="L277">            MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
+<span class="nc bnc" id="L278" title="All 2 branches missed.">            for(int j = 0; j &lt; currentFloor.keys().size(); j++){</span>
+<span class="nc" id="L279">                int roomNumber = (int)currentFloor.keys().get(j);</span>
+<span class="nc" id="L280">                Room currentRoom = currentFloor.get(roomNumber);</span>
+<span class="nc" id="L281">                System.out.println(&quot;Room &quot; + currentRoom.getRoomNumberInHotel()+ &quot; price: &quot; + currentRoom.getPrice());</span>
+            }
+        }
+<span class="nc" id="L284">    }</span>
+
+    /**
+     * Allows the user to view detailed information about a specific room.
+     * This method prompts the user for a room number and, if the room exists,
+     * it displays information about the room such as its guests, price, check-in date, etc.
+     * If the room is not found, a message is printed.
+     *
+     * @param hotel The `Hotel` object containing the rooms to be viewed.
+     * @return `true` if the room information is displayed successfully, `false` if the room is not found.
+     */
+    public boolean view(Hotel hotel) {
+<span class="nc" id="L296">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L297">        System.out.println(&quot;Room number: &quot;);</span>
+<span class="nc" id="L298">        int roomNumber = scanner.nextInt();</span>
+<span class="nc" id="L299">        Room currentRoom = hotel.getRoomByNumber(roomNumber);</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">        if (currentRoom == null) {</span>
+<span class="nc" id="L301">            System.out.println(&quot;Room not found&quot;);</span>
+<span class="nc" id="L302">            return false;</span>
+        }
+        else {
+<span class="nc" id="L305">            return currentRoom.showInfo();</span>
+        }
+    }
+
+    /**
+     * Lists all rooms in the hotel, displaying information about each room in all floors.
+     * For each room, basic details like room number, capacity, and availability are shown.
+     *
+     * @param hotel The `Hotel` object containing the floors and rooms to be listed.
+     */
+    public void list(Hotel hotel) {
+<span class="nc bnc" id="L316" title="All 2 branches missed.">        for(int i = 0; i &lt; hotel.getFloors().size(); i++){</span>
+<span class="nc" id="L317">            System.out.println(&quot;Floor &quot; + i + &quot;: &quot;);</span>
+<span class="nc" id="L318">            MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
+<span class="nc bnc" id="L319" title="All 2 branches missed.">            for(int j = 0; j &lt; currentFloor.keys().size(); j++){</span>
+<span class="nc" id="L320">                int roomNumber = (int)currentFloor.keys().get(j);</span>
+<span class="nc" id="L321">                Room currentRoom = currentFloor.get(roomNumber);</span>
+<span class="nc" id="L322">                currentRoom.listRoom();</span>
+            }
+        }
+<span class="nc" id="L325">    }</span>
+
+    /**
+     * Saves the current state of the hotel (including all rooms and their details) to a CSV file.
+     * The hotel data is written to the specified file in CSV format with headers:
+     * Floor, RoomNumber, Capacity, Price, IsFree, MainGuest, OtherGuests, DateOfCheckin, LengthOfStay, AdditionalData.
+     * If a room has no main guest or other guests, appropriate placeholders like &quot;No main guest&quot; or &quot;No other guests&quot; are used.
+     * The check-in date and length of stay are also handled with default placeholders if not available.
+     *
+     * @param hotel The `Hotel` object whose room and guest data is saved to the CSV.
+     * @param fileName The name of the file where the hotel data will be saved.
+     * @throws IOException If an error occurs while writing to the file.
+     */
+    public void saveToCsv(Hotel hotel, String fileName) throws IOException {
+<span class="nc" id="L339">        try(FileWriter fileWriter = new FileWriter(fileName);</span>
+<span class="nc" id="L340">            CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(&quot;Floor&quot;, &quot;RoomNumber&quot;,&quot;Capacity&quot;, &quot;Price&quot;, &quot;IsFree&quot;, &quot;MainGuest&quot;, &quot;OtherGuests&quot;, &quot;DateOfCheckin&quot;, &quot;LengthOfStay&quot;, &quot;AdditionalData&quot;))){</span>
+<span class="nc bnc" id="L341" title="All 2 branches missed.">            for(int i = 0; i &lt; hotel.getFloors().size(); i++) {</span>
+<span class="nc" id="L342">                MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
+<span class="nc bnc" id="L343" title="All 2 branches missed.">                for(int j = 0; j &lt; currentFloor.keys().size(); j++) {</span>
+<span class="nc" id="L344">                    int roomNumber = (int)currentFloor.keys().get(j);</span>
+<span class="nc" id="L345">                    Room currentRoom = currentFloor.get(roomNumber);</span>
+<span class="nc" id="L346">                    String otherGuestsString = &quot;&quot;;</span>
+<span class="nc bnc" id="L347" title="All 4 branches missed.">                    if (currentRoom.getOtherGuests() != null &amp;&amp; !currentRoom.getOtherGuests().isEmpty()) {</span>
+<span class="nc bnc" id="L348" title="All 2 branches missed.">                        for(Guest guest : currentRoom.getOtherGuests()) {</span>
+<span class="nc" id="L349">                            otherGuestsString += guest.getName() + &quot; &quot; + guest.getSurname() + &quot;,&quot;;</span>
+<span class="nc" id="L350">                        }</span>
+<span class="nc" id="L351">                        otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 1);</span>
+                    }
+<span class="nc" id="L353">                    csvPrinter.printRecord(</span>
+<span class="nc" id="L354">                            i,</span>
+<span class="nc" id="L355">                            roomNumber,</span>
+<span class="nc" id="L356">                            currentRoom.getCapacity(),</span>
+<span class="nc" id="L357">                            currentRoom.getPrice(),</span>
+<span class="nc" id="L358">                            currentRoom.isFree(),</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">                            currentRoom.getMainGuest() != null ? currentRoom.getMainGuest().getInfo() : &quot;No main guest&quot;,</span>
+<span class="nc bnc" id="L360" title="All 4 branches missed.">                            otherGuestsString != null &amp;&amp; !otherGuestsString.isEmpty()  ? otherGuestsString : &quot;No other guests&quot;,</span>
+<span class="nc bnc" id="L361" title="All 2 branches missed.">                            currentRoom.getDateOfCheckin() != null ? currentRoom.getDateOfCheckin(): &quot;No date of checkin&quot;,</span>
+<span class="nc bnc" id="L362" title="All 2 branches missed.">                            currentRoom.getLengthOfStay() != 0 ? currentRoom.getLengthOfStay() : &quot;No length of stay&quot;,</span>
+<span class="nc bnc" id="L363" title="All 2 branches missed.">                            currentRoom.getAdditionalData() != null ? currentRoom.getAdditionalData() : &quot;No additional data&quot;</span>
+                    );
+                }
+            }
+        }
+
+
+<span class="nc" id="L370">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
