@@ -42,70 +42,70 @@ public class Room {
      * @param price               the price per night for staying in the room
      * @param capacity            the maximum number of guests that can stay in the room
      */
-<span class="nc" id="L45">    public Room(int floorNumber, int roomNumberInHotel, float price, int capacity) {</span>
-<span class="nc" id="L46">        this.floorNumber = floorNumber;</span>
-<span class="nc" id="L47">        this.price = price;</span>
-<span class="nc" id="L48">        this.capacity = capacity;</span>
-<span class="nc" id="L49">        this.roomNumberOnFloor = roomNumberInHotel - floorNumber*100;</span>
-<span class="nc" id="L50">        this.roomNumberInHotel = roomNumberInHotel;</span>
-<span class="nc" id="L51">    }</span>
+<span class="fc" id="L45">    public Room(int floorNumber, int roomNumberInHotel, float price, int capacity) {</span>
+<span class="fc" id="L46">        this.floorNumber = floorNumber;</span>
+<span class="fc" id="L47">        this.price = price;</span>
+<span class="fc" id="L48">        this.capacity = capacity;</span>
+<span class="fc" id="L49">        this.roomNumberOnFloor = roomNumberInHotel - floorNumber*100;</span>
+<span class="fc" id="L50">        this.roomNumberInHotel = roomNumberInHotel;</span>
+<span class="fc" id="L51">    }</span>
 
 
     public boolean isFree(){
-<span class="nc bnc" id="L55" title="All 2 branches missed.">        return mainGuest == null;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        return mainGuest == null;</span>
     }
 
     public void setFree(){
-<span class="nc" id="L59">        mainGuest = null;</span>
-<span class="nc" id="L60">    }</span>
+<span class="fc" id="L59">        mainGuest = null;</span>
+<span class="fc" id="L60">    }</span>
 
     public float totalPrice(){
-<span class="nc" id="L63">        float totalPrice = 0;</span>
-<span class="nc" id="L64">        int numberOfDays = (int) ChronoUnit.DAYS.between(this.dateOfCheckin, Instant.now());</span>
-<span class="nc" id="L65">        totalPrice = price*numberOfDays;</span>
-<span class="nc" id="L66">        return totalPrice;</span>
+<span class="fc" id="L63">        float totalPrice = 0;</span>
+<span class="fc" id="L64">        int numberOfDays = (int) ChronoUnit.DAYS.between(this.dateOfCheckin, Instant.now());</span>
+<span class="fc" id="L65">        totalPrice = price*numberOfDays;</span>
+<span class="fc" id="L66">        return totalPrice;</span>
     }
 
     public boolean showInfo(){
-<span class="nc" id="L70">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
-<span class="nc" id="L71">        System.out.println(&quot;Room price: &quot; + price);</span>
-<span class="nc" id="L72">        System.out.println(&quot;Capacity: &quot; + capacity);</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if(mainGuest != null){</span>
-<span class="nc" id="L74">            System.out.println(&quot;Room is occupied&quot;);</span>
-<span class="nc" id="L75">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
-<span class="nc bnc" id="L76" title="All 2 branches missed.">            if(otherGuests != null){</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">                for(Guest guest : otherGuests){</span>
-<span class="nc" id="L78">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
-<span class="nc" id="L79">                }</span>
+<span class="fc" id="L70">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
+<span class="fc" id="L71">        System.out.println(&quot;Room price: &quot; + price);</span>
+<span class="fc" id="L72">        System.out.println(&quot;Capacity: &quot; + capacity);</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if(mainGuest != null){</span>
+<span class="fc" id="L74">            System.out.println(&quot;Room is occupied&quot;);</span>
+<span class="fc" id="L75">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">            if(otherGuests != null){</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                for(Guest guest : otherGuests){</span>
+<span class="fc" id="L78">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
+<span class="fc" id="L79">                }</span>
             }
-<span class="nc" id="L81">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
-<span class="nc" id="L82">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">            if(!StringUtils.isEmpty(additionalData)) {</span>
+<span class="fc" id="L81">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
+<span class="fc" id="L82">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if(!StringUtils.isEmpty(additionalData)) {</span>
 <span class="nc" id="L84">                System.out.println(&quot;Additional data: &quot; + additionalData);</span>
             }
         }
         else {
-<span class="nc" id="L88">            System.out.println(&quot;Room is free&quot;);</span>
+<span class="fc" id="L88">            System.out.println(&quot;Room is free&quot;);</span>
         }
-<span class="nc" id="L90">        return true;</span>
+<span class="fc" id="L90">        return true;</span>
     }
     public boolean listRoom(){
-<span class="nc" id="L93">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">        if(mainGuest != null){</span>
-<span class="nc" id="L95">            System.out.println(&quot;Room is occupied&quot;);</span>
-<span class="nc" id="L96">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">            if(otherGuests != null){</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">                for(Guest guest : otherGuests){</span>
-<span class="nc" id="L99">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
-<span class="nc" id="L100">                }</span>
+<span class="fc" id="L93">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        if(mainGuest != null){</span>
+<span class="fc" id="L95">            System.out.println(&quot;Room is occupied&quot;);</span>
+<span class="fc" id="L96">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">            if(otherGuests != null){</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">                for(Guest guest : otherGuests){</span>
+<span class="fc" id="L99">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
+<span class="fc" id="L100">                }</span>
             }
-<span class="nc" id="L102">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
-<span class="nc" id="L103">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
+<span class="fc" id="L102">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
+<span class="fc" id="L103">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
         }
         else {
-<span class="nc" id="L106">            System.out.println(&quot;Room is free&quot;);</span>
+<span class="fc" id="L106">            System.out.println(&quot;Room is free&quot;);</span>
         }
-<span class="nc" id="L108">        return true;</span>
+<span class="fc" id="L108">        return true;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

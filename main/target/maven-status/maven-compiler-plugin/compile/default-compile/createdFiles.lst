@@ -1,5 +1,15 @@
-pl\edu\agh\kis\pz1\main\Main.class
-pl\edu\agh\kis\pz1\main\model\Guest.class
+pl\edu\agh\kis\pz1\main\commands\hotelFromCSV.class
+pl\edu\agh\kis\pz1\main\commands\Prices.class
+pl\edu\agh\kis\pz1\main\commands\List.class
 pl\edu\agh\kis\pz1\main\model\Hotel.class
 pl\edu\agh\kis\pz1\main\model\HotelService.class
+pl\edu\agh\kis\pz1\main\commands\HotelSystem.class
+pl\edu\agh\kis\pz1\main\Main.class
 pl\edu\agh\kis\pz1\main\model\Room.class
+pl\edu\agh\kis\pz1\main\commands\View.class
+pl\edu\agh\kis\pz1\main\commands\CheckOut.class
+pl\edu\agh\kis\pz1\main\commands\Exit.class
+pl\edu\agh\kis\pz1\main\commands\hotelToCSV.class
+pl\edu\agh\kis\pz1\main\model\Guest.class
+pl\edu\agh\kis\pz1\main\commands\CheckIn.class
+pl\edu\agh\kis\pz1\main\commands\Command.class

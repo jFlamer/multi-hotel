@@ -33,6 +33,9 @@ public class Hotel {
      */
     public Room getRoomByNumber(int number) {
         int roomsFloor = number/100;
+        if (roomsFloor + 1 > floors.size()) {
+            return null;
+        }
         if (floors.get(roomsFloor).contains(number)) {
             Room currentRoom = floors.get(roomsFloor).get(number);
             return currentRoom;
