@@ -1,8 +1,15 @@
 package pl.edu.agh.kis.pz1.main.model;
 
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
 import pl.edu.agh.kis.pz1.util.MyMap;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -21,14 +28,14 @@ public class HotelService {
      */
     public HotelService() {}
 
-    /**
+    /*/**
      * Creates a random room with a specified floor and position on that floor.
      *
      * @param floorNumber the floor number where the room is located.
      * @param onFloorNumber the room's position on the specified floor.
      * @return a Room object with randomly generated properties.
      */
-    private Room createRandRoom(int floorNumber, int onFloorNumber) {
+    /*private Room createRandRoom(int floorNumber, int onFloorNumber) {
         Random random = new Random();
         Room randRoom = new Room(floorNumber, onFloorNumber,
                 (((random.nextInt(40001) + 10000) / 100l)),random.nextInt(5) + 1);
@@ -45,7 +52,7 @@ public class HotelService {
      * @param floorNumber the floor number.
      * @return a MyMap<Integer, Room> object containing randomly generated rooms for the floor.
      */
-    private MyMap<Integer, Room> createRandFloor(int floorNumber) {
+   /* private MyMap<Integer, Room> createRandFloor(int floorNumber) {
         MyMap<Integer, Room> randFloor = new MyMap<>();
         Random random = new Random();
         int numberOfRooms = random.nextInt(21) + 1;
@@ -60,16 +67,80 @@ public class HotelService {
      *
      * @return a Hotel object populated with floors and rooms.
      */
-    public Hotel createHotel() {
+    /*public Hotel createHotel() {
         int numberOfFloors = 8;
         Hotel testHotel = new Hotel();
         for (int i = 0; i < numberOfFloors; i++) {
             testHotel.getFloors().add(createRandFloor(i));
         }
         return testHotel;
+    }*/
+
+    public Hotel HotelCsv(Hotel hotel, String fileName) throws IOException {
+        try (FileReader reader = new FileReader(fileName);
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {
+
+            ArrayList<MyMap<Integer, Room>> floors = new ArrayList<>();
+            for (CSVRecord record : csvParser) {
+                int floorNumber = Integer.parseInt(record.get("Floor"));
+                int roomNumber = Integer.parseInt(record.get("RoomNumber"));
+                int capacity = Integer.parseInt(record.get("Capacity"));
+                float price = Float.parseFloat(record.get("Price"));
+                boolean isFree = Boolean.parseBoolean(record.get("IsFree"));
+                String mainGuestInfo = record.get("MainGuest");
+                String otherGuestsInfo = record.get("OtherGuests");
+                String checkInDate = record.get("DateOfCheckin");
+                String lengthOfStayStr = record.get("LengthOfStay");
+                String additionalData = record.get("AdditionalData");
+
+                MyMap<Integer, Room> currentFloor = null;
+                if (floorNumber + 1 > floors.size()) {
+                    currentFloor = new MyMap<>();
+                    floors.add(currentFloor);
+                } else {
+                    currentFloor = floors.get(floorNumber);
+                }
+
+                int lengthOfStay = 0;
+                if (!" ".equals(lengthOfStayStr)) {
+                    lengthOfStay = Integer.parseInt(lengthOfStayStr);
+                }
+
+                Guest mainGuest = null;
+                if (mainGuestInfo != null && !mainGuestInfo.isEmpty() && !" ".equals(mainGuestInfo)) {
+                    String[] mainGuestInfoArray = mainGuestInfo.split(" ");
+                    mainGuest = new Guest(mainGuestInfoArray[0], mainGuestInfoArray[1]);
+                }
+
+                ArrayList<Guest> otherGuests = new ArrayList<>();
+                if (otherGuestsInfo != null && !otherGuestsInfo.isEmpty() && !" ".equals(otherGuestsInfo)) {
+                    String[] otherGuestsInfoArray = otherGuestsInfo.split(", ");
+                    for (String otherGuest : otherGuestsInfoArray) {
+                        String[] guestInfoArray = otherGuest.split(" ");
+                        otherGuests.add(new Guest(guestInfoArray[0], guestInfoArray[1]));
+                    }
+                }
+
+                Instant checkIn = null;
+                if (checkInDate != null && !checkInDate.isEmpty() && !" ".equals(checkInDate)) {
+                    checkIn = Instant.parse(checkInDate);
+                }
+
+                Room newRoom = new Room(floorNumber, roomNumber, price, capacity);
+                newRoom.setMainGuest(mainGuest);
+                newRoom.setOtherGuests(otherGuests);
+                newRoom.setDateOfCheckin(checkIn);
+                newRoom.setLengthOfStay(lengthOfStay);
+                newRoom.setAdditionalData(additionalData);
+                currentFloor.put(roomNumber, newRoom);
+            }
+            hotel.setFloors(floors);
+        }
+        return hotel;
     }
 
-    /**
+
+/**
      * Collects guest data for checking into a room.
      *
      * @param capacityOfRoom the maximum number of guests allowed in the room.
@@ -191,5 +262,39 @@ public class HotelService {
                 currentRoom.listRoom();
             }
         }
+    }
+
+    public void saveToCsv(Hotel hotel, String fileName) throws IOException {
+        try(FileWriter fileWriter = new FileWriter(fileName);
+            CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader("Floor", "RoomNumber","Capacity", "Price", "IsFree", "MainGuest", "OtherGuests", "DateOfCheckin", "LengthOfStay", "AdditionalData"))){
+            for(int i = 0; i < hotel.getFloors().size(); i++) {
+                MyMap<Integer, Room> currentFloor = hotel.getFloors().get(i);
+                for(int j = 0; j < currentFloor.keys().size(); j++) {
+                    int roomNumber = (int)currentFloor.keys().get(j);
+                    Room currentRoom = currentFloor.get(roomNumber);
+                    String otherGuestsString = "";
+                    if (currentRoom.getOtherGuests() != null && !currentRoom.getOtherGuests().isEmpty()) {
+                        for(Guest guest : currentRoom.getOtherGuests()) {
+                            otherGuestsString += guest.getName() + " " + guest.getSurname() + ",";
+                        }
+                        otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 1);
+                    }
+                    csvPrinter.printRecord(
+                            i,
+                            roomNumber,
+                            currentRoom.getCapacity(),
+                            currentRoom.getPrice(),
+                            currentRoom.isFree(),
+                            currentRoom.getMainGuest() != null ? currentRoom.getMainGuest().getInfo() : "No main guest",
+                            otherGuestsString != null && !otherGuestsString.isEmpty()  ? otherGuestsString : "No other guests",
+                            currentRoom.getDateOfCheckin() != null ? currentRoom.getDateOfCheckin(): "No date of checkin",
+                            currentRoom.getLengthOfStay() != 0 ? currentRoom.getLengthOfStay() : "No length of stay",
+                            currentRoom.getAdditionalData() != null ? currentRoom.getAdditionalData() : "No additional data"
+                    );
+                }
+            }
+        }
+
+
     }
 }

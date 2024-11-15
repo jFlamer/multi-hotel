@@ -19,6 +19,8 @@ public class Room {
     private int capacity;
     private Guest mainGuest;
     private ArrayList<Guest> otherGuests;
+
+
     private Instant dateOfCheckin;
 
     public String getAdditionalData() {
@@ -45,16 +47,16 @@ public class Room {
      * Constructs a new Room object with specified attributes.
      *
      * @param floorNumber         the floor number where the room is located
-     * @param roomNumberOnFloor   the room number within the specific floor
+     * @param roomNumberInHotel   the room number within the specific floor
      * @param price               the price per night for staying in the room
      * @param capacity            the maximum number of guests that can stay in the room
      */
-    public Room(int floorNumber, int roomNumberOnFloor, float price, int capacity) {
+    public Room(int floorNumber, int roomNumberInHotel, float price, int capacity) {
         this.floorNumber = floorNumber;
         this.price = price;
         this.capacity = capacity;
-        this.roomNumberOnFloor = roomNumberOnFloor;
-        this.roomNumberInHotel = floorNumber*100 + roomNumberOnFloor;
+        this.roomNumberOnFloor = roomNumberInHotel - floorNumber*100;
+        this.roomNumberInHotel = roomNumberInHotel;
     }
 
 
@@ -79,6 +81,7 @@ public class Room {
         return otherGuests;
     }
     public int getRoomNumberInHotel() {return roomNumberInHotel;}
+    public Instant getDateOfCheckin() {return dateOfCheckin;}
 
     public void setPrice(float price) {
         this.price = price;

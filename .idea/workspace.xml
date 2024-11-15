@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="">
+    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="added prices method, view, checkout, and list">
+      <change afterPath="$PROJECT_DIR$/hotel_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/test/java/pl/edu/agh/kis/pz1/GuestTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sonar-project.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/HotelService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Guest.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Guest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/HotelService.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/HotelService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/src/main/java/pl/edu/agh/kis/pz1/util/TextUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/classes/pl/edu/agh/kis/pz1/util/TextUtils.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +62,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "JUnit.GuestTest.executor": "Run",
+    "JUnit.GuestTest.testConstructor.executor": "Run",
+    "JUnit.GuestTest.testSetNameAndSurname.executor": "Run",
+    "JUnit.MainTest.shouldCreateMainObject.executor": "Run",
     "JUnit.MyMapTest.executor": "Debug",
     "JUnit.TextUtilsTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -97,6 +112,129 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.main.Main" />
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.main.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest.testConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="METHOD_NAME" value="testConstructor" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest.testSetNameAndSurname" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="METHOD_NAME" value="testSetNameAndSurname" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuestTest.testSetNameAndSurname" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.GuestTest" />
+      <option name="METHOD_NAME" value="testSetNameAndSurname" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.shouldCreateMainObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.MainTest" />
+      <option name="METHOD_NAME" value="shouldCreateMainObject" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="utils" />
       <extension name="coverage">
@@ -112,26 +250,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TextUtilsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="utils" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.edu.agh.kis.pz1.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1.util" />
-      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.util.TextUtilsTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MyMapTest" />
-        <item itemvalue="JUnit.TextUtilsTest" />
+        <item itemvalue="JUnit.GuestTest" />
+        <item itemvalue="JUnit.GuestTest.testConstructor" />
+        <item itemvalue="JUnit.MainTest.shouldCreateMainObject" />
+        <item itemvalue="JUnit.GuestTest.testSetNameAndSurname" />
       </list>
     </recent_temporary>
   </component>
@@ -155,14 +280,45 @@
       <workItem from="1730232803363" duration="228000" />
       <workItem from="1730233070457" duration="24836000" />
       <workItem from="1730798262207" duration="1838000" />
-      <workItem from="1731140410577" duration="3676000" />
+      <workItem from="1731140410577" duration="5550000" />
+      <workItem from="1731145990786" duration="2389000" />
+      <workItem from="1731661881180" duration="11977000" />
     </task>
+    <task id="LOCAL-00001" summary="added prices method, view, checkout, and list">
+      <option name="closed" value="true" />
+      <created>1731144203809</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731144203809</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added prices method, view, checkout, and list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added prices method, view, checkout, and list" />
+  </component>
   <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="pl.edu.agh.kis.pz1.GuestTest" memberName="guest" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="hotel.floors" />

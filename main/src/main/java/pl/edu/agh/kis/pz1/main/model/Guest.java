@@ -34,4 +34,6 @@ public class Guest {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    public String getInfo(){ return name + " " + surname; }
 }
