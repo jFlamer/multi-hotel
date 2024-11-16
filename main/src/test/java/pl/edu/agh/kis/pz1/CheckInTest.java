@@ -134,4 +134,56 @@ class CheckInTest {
         assertEquals("Jane", guest.getName(), "Guest name should be Jane.");
         assertEquals("Doe", guest.getSurname(), "Guest surname should be Doe.");
     }
+
+    @Test
+    void testSetUserDateOfCheckin() {
+        // Simulate user input for a check-in date
+        String simulatedInput = "2024-11-16\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Call the method directly
+        String checkInDate = checkInCommand.setUserDateOfCheckin();
+
+        // Verify the check-in time is correctly set
+        assertNotNull(checkInDate, "Date of check-in should not be null.");
+        assertEquals(
+                "2024-11-16T00:00:00Z",
+                checkInDate,
+                "Date of check-in should match the simulated input."
+        );
+    }
+
+    @Test
+    void testSetUserLengthOfStay() {
+        // Simulate user input for the length of stay
+        String simulatedInput = "5\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        int lengthOfStayScan = checkInCommand.setUserLengthOfStay();
+
+        // Verify the length of stay is correctly set
+        assertEquals(
+                5,
+                lengthOfStayScan,
+                "Length of stay should match the simulated input."
+        );
+    }
+
+    @Test
+    void testSetUserAdditionalInfo() {
+        // Simulate user input for the length of stay (as described in the method)
+        String simulatedInput = "Extra info\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        String AdditionalInfoScan = checkInCommand.setUserAdditionalInfo();
+
+        // Verify the length of stay is correctly set
+        assertEquals(
+                "Extra info",
+                AdditionalInfoScan,
+                "AdditionalInfo should match the simulated input."
+        );
+    }
+
+
 }

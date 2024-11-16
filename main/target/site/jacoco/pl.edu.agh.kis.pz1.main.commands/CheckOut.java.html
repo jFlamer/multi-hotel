@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckOut.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">CheckOut.java</span></div><h1>CheckOut.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+import lombok.*;
+import pl.edu.agh.kis.pz1.main.model.Hotel;
+import pl.edu.agh.kis.pz1.main.model.Room;
+
+import java.util.Scanner;
+
+/**
+ * The {@code CheckOut} class handles the check-out process for guests in the hotel.
+ * It allows users to check out a guest by marking the room as free, resetting the relevant
+ * booking data, and calculating the total price for the stay.
+ * &lt;p&gt;
+ * The class provides functionality to:
+ * &lt;ul&gt;
+ *     &lt;li&gt;Prompt the user for the room number to check out from.&lt;/li&gt;
+ *     &lt;li&gt;Check whether the room is currently occupied or free.&lt;/li&gt;
+ *     &lt;li&gt;Update room data to mark it as free and reset guest details upon check-out.&lt;/li&gt;
+ *     &lt;li&gt;Calculate and display the total price of the stay upon check-out.&lt;/li&gt;
+ * &lt;/ul&gt;
+ * It can operate in test mode, which allows bypassing the user input for automated testing.
+ * &lt;/p&gt;
+ */
+@Data
+public class CheckOut extends Command {
+
+    /** A flag indicating whether the command is in test mode. If set to {@code true}, input scanning is skipped. */
+    private boolean testMode = false;
+
+    /** The room number to check out from. */
+    private int roomNumber;
+
+    /**
+     * Executes the check-out process for a guest from a specified room.
+     * This method interacts with the user to gather the room number, and then it performs
+     * the check-out procedure, which includes marking the room as free, resetting booking data,
+     * and calculating the total price for the guest's stay.
+     * If the room is already free, a message is displayed to indicate that the room is not occupied.
+     * If the room is found and occupied, the system updates the room's status and displays the total price.
+     *
+     * @param hotel The {@link Hotel} object representing the hotel with rooms to manage.
+     */
+    @Override
+    public void execute(Hotel hotel) {
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        if (!testMode) {</span>
+<span class="nc" id="L46">            Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L47">            System.out.println(&quot;Room number: &quot;);</span>
+<span class="nc" id="L48">            this.roomNumber = scanner.nextInt();</span>
+        }
+<span class="fc" id="L50">        Room currentRoom = hotel.getRoomByNumber(roomNumber);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (currentRoom == null) {</span>
+<span class="fc" id="L52">            System.out.println(&quot;Room not found&quot;);</span>
+<span class="fc" id="L53">            return;</span>
+        }
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (!currentRoom.isFree()){</span>
+<span class="fc" id="L56">            currentRoom.setFree();</span>
+<span class="fc" id="L57">            currentRoom.setAdditionalData(null);</span>
+<span class="fc" id="L58">            float totalPrice = currentRoom.totalPrice();</span>
+<span class="fc" id="L59">            System.out.println(&quot;Total price: &quot; + totalPrice);</span>
+<span class="fc" id="L60">            currentRoom.setDateOfCheckin(null);</span>
+<span class="fc" id="L61">            currentRoom.setLengthOfStay(0);</span>
+<span class="fc" id="L62">            return;</span>
+        }
+        else {
+<span class="fc" id="L65">            System.out.println(&quot;Room is not occupied&quot;);</span>
+<span class="fc" id="L66">            return;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

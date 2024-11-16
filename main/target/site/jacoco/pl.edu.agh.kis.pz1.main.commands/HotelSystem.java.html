@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HotelSystem.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">HotelSystem.java</span></div><h1>HotelSystem.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+import pl.edu.agh.kis.pz1.main.model.Hotel;
+
+import java.util.Scanner;
+
+
+/**
+ * The {@code HotelSystem} class serves as the main controller for managing hotel operations. It provides
+ * an interactive command-line interface that allows users to check in and check out guests, load and
+ * save hotel data from/to CSV files, view room statuses and prices, and perform other hotel management tasks.
+ * &lt;p&gt;
+ * The class defines several commands that are mapped to specific actions such as checking in a guest, viewing room
+ * information, and loading data from a CSV file. It also provides a loop for continuous interaction until the user
+ * chooses to exit the application.
+ * &lt;/p&gt;
+ */
+<span class="nc" id="L18">public class HotelSystem {</span>
+<span class="nc" id="L19">    public Command checkIn = new CheckIn();</span>
+<span class="nc" id="L20">    public Command checkOut = new CheckOut();</span>
+<span class="nc" id="L21">    public Command getFromCSV = new hotelFromCSV();</span>
+<span class="nc" id="L22">    public Command saveToCSV = new hotelToCSV();</span>
+<span class="nc" id="L23">    public Command listRooms = new List();</span>
+<span class="nc" id="L24">    public Command prices = new Prices();</span>
+<span class="nc" id="L25">    public Command view = new View();</span>
+<span class="nc" id="L26">    public Command exit = new Exit();</span>
+
+
+/**
+ * Prints the available commands for the user to choose from. These commands allow the user to interact
+ * with the hotel system and perform various actions.
+ */
+    private void printCommands() {
+<span class="nc" id="L34">        System.out.print(&quot;&quot;&quot;</span>
+                Please choose a command to execute:
+                1. Check In - Use this command to check in a guest to a room.
+                2. Check Out - Use this command to check out a guest from a room.
+                3. Get from CSV - Load hotel data from a CSV file.
+                4. Save to CSV - Save hotel data to a CSV file.
+                5. List Rooms - Display a list of all rooms and their statuses.
+                6. Prices - View room pricing information.
+                7. View - View detailed information about a specific room.
+                8. Exit - Exit application.
+                Enter the number corresponding to your choice:
+                &quot;&quot;&quot;);
+
+<span class="nc" id="L47">    }</span>
+
+    /**
+     * Manages the hotel system by repeatedly displaying available commands to the user and executing the chosen command.
+     * This method runs in a loop, accepting user input for different actions (such as check-in, check-out, or viewing rooms),
+     * and continues until the user opts to exit the application.
+     * &lt;p&gt;
+     * The user can choose from a list of available commands. The loop terminates after 100 iterations or when the user
+     * selects the &quot;Exit&quot; option.
+     * &lt;/p&gt;
+     *
+     * @param hotel The hotel object that will be managed through the available commands.
+     */
+    public void manageHotel(Hotel hotel) {
+<span class="nc" id="L61">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L62">        int opt = 0;</span>
+<span class="nc" id="L63">        int buffor = 100;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        while (buffor &gt; 0) {</span>
+<span class="nc" id="L65">            printCommands();</span>
+<span class="nc" id="L66">            opt = scanner.nextInt();</span>
+<span class="nc bnc" id="L67" title="All 9 branches missed.">            switch (opt) {</span>
+                case 1:
+<span class="nc" id="L69">                    checkIn.execute(hotel);</span>
+<span class="nc" id="L70">                    break;</span>
+                case 2:
+<span class="nc" id="L72">                    checkOut.execute(hotel);</span>
+<span class="nc" id="L73">                    break;</span>
+                case 3:
+<span class="nc" id="L75">                    getFromCSV.execute(hotel);</span>
+<span class="nc" id="L76">                    break;</span>
+                case 4:
+<span class="nc" id="L78">                    saveToCSV.execute(hotel);</span>
+<span class="nc" id="L79">                    break;</span>
+                case 5:
+<span class="nc" id="L81">                    listRooms.execute(hotel);</span>
+<span class="nc" id="L82">                    break;</span>
+                case 6:
+<span class="nc" id="L84">                    prices.execute(hotel);</span>
+<span class="nc" id="L85">                    break;</span>
+                case 7:
+<span class="nc" id="L87">                    view.execute(hotel);</span>
+<span class="nc" id="L88">                    break;</span>
+                case 8:
+<span class="nc" id="L90">                    exit.execute(hotel);</span>
+<span class="nc" id="L91">                    break;</span>
+                default:
+<span class="nc" id="L93">                    System.out.println(&quot;Invalid command&quot;);</span>
+            }
+<span class="nc" id="L95">            buffor -= 1;</span>
+        }
+<span class="nc" id="L97">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

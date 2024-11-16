@@ -13,11 +13,39 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The {@code hotelFromCSV} class is responsible for loading hotel data from a CSV file and updating
+ * the hotel object with the parsed data. This class reads data such as floor number, room number,
+ * capacity, price, guest details, and check-in information from the CSV file and maps them to room
+ * objects in the hotel.
+ * <p>
+ * The CSV file is expected to contain the following columns: "Floor", "RoomNumber", "Capacity",
+ * "Price", "IsFree", "MainGuest", "OtherGuests", "DateOfCheckin", "LengthOfStay", and "AdditionalData".
+ * </p>
+ */
 public class hotelFromCSV extends Command {
+
+    /**
+     * Helper method to check if a string is non-null, non-empty, and not just a space.
+     *
+     * @param obj The string to check.
+     * @return {@code true} if the string is valid, otherwise {@code false}.
+     */
     private boolean correctInfo(String obj){
         return obj != null && !obj.isEmpty() && !" ".equals(obj);
     }
 
+
+    /**
+     * Executes the command to load hotel data from a CSV file. The method prompts the user to enter
+     * the file name, reads the file, and parses its contents into rooms which are then added to the hotel.
+     * <p>
+     * The CSV file should contain rows with room and guest information. For each room, a new {@link Room}
+     * object is created and added to the appropriate floor in the hotel.
+     * </p>
+     *
+     * @param hotel The hotel object that will be populated with room data from the CSV file.
+     */
     @Override
     public void execute(Hotel hotel){
         Scanner scanner = new Scanner(System.in);

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>List.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">List.java</span></div><h1>List.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+import pl.edu.agh.kis.pz1.main.model.Hotel;
+import pl.edu.agh.kis.pz1.main.model.Room;
+import pl.edu.agh.kis.pz1.util.MyMap;
+
+/**
+ * The {@code List} class is responsible for listing all rooms in the hotel, organized by floor.
+ * It iterates through all the floors of the hotel and displays the details of each room within each floor.
+ * This includes displaying room information such as room number, capacity, price, and whether the room is available or occupied.
+ * &lt;p&gt;
+ * This command is used to view the status of all rooms in the hotel, making it easier for hotel staff to quickly check room availability.
+ * &lt;/p&gt;
+ */
+<span class="fc" id="L15">public class List extends Command {</span>
+
+    /**
+     * Executes the command to list all the rooms in the hotel by floor.
+     * For each floor, it prints the floor number followed by the details of each room on that floor.
+     * This helps the user to easily see the layout of the hotel, room numbers, and their availability status.
+     *
+     * The room details are retrieved using the {@link Room#listRoom()} method, which is expected to print the room's information.
+     *
+     * @param hotel The hotel whose room details are to be listed.
+     */
+    @Override
+    public void execute(Hotel hotel) {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for(int i = 0; i &lt; hotel.getFloors().size(); i++){</span>
+<span class="fc" id="L29">            System.out.println(&quot;Floor &quot; + i + &quot;: &quot;);</span>
+<span class="fc" id="L30">            MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            for(int j = 0; j &lt; currentFloor.keys().size(); j++){</span>
+<span class="fc" id="L32">                int roomNumber = (int)currentFloor.keys().get(j);</span>
+<span class="fc" id="L33">                Room currentRoom = currentFloor.get(roomNumber);</span>
+<span class="fc" id="L34">                currentRoom.listRoom();</span>
+            }
+        }
+<span class="fc" id="L37">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

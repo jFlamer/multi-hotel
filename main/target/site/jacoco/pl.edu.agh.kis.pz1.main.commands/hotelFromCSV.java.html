@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>hotelFromCSV.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">hotelFromCSV.java</span></div><h1>hotelFromCSV.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+import pl.edu.agh.kis.pz1.main.model.*;
+import pl.edu.agh.kis.pz1.util.MyMap;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * The {@code hotelFromCSV} class is responsible for loading hotel data from a CSV file and updating
+ * the hotel object with the parsed data. This class reads data such as floor number, room number,
+ * capacity, price, guest details, and check-in information from the CSV file and maps them to room
+ * objects in the hotel.
+ * &lt;p&gt;
+ * The CSV file is expected to contain the following columns: &quot;Floor&quot;, &quot;RoomNumber&quot;, &quot;Capacity&quot;,
+ * &quot;Price&quot;, &quot;IsFree&quot;, &quot;MainGuest&quot;, &quot;OtherGuests&quot;, &quot;DateOfCheckin&quot;, &quot;LengthOfStay&quot;, and &quot;AdditionalData&quot;.
+ * &lt;/p&gt;
+ */
+<span class="fc" id="L26">public class hotelFromCSV extends Command {</span>
+
+    /**
+     * Helper method to check if a string is non-null, non-empty, and not just a space.
+     *
+     * @param obj The string to check.
+     * @return {@code true} if the string is valid, otherwise {@code false}.
+     */
+    private boolean correctInfo(String obj){
+<span class="pc bpc" id="L35" title="2 of 6 branches missed.">        return obj != null &amp;&amp; !obj.isEmpty() &amp;&amp; !&quot; &quot;.equals(obj);</span>
+    }
+
+
+    /**
+     * Executes the command to load hotel data from a CSV file. The method prompts the user to enter
+     * the file name, reads the file, and parses its contents into rooms which are then added to the hotel.
+     * &lt;p&gt;
+     * The CSV file should contain rows with room and guest information. For each room, a new {@link Room}
+     * object is created and added to the appropriate floor in the hotel.
+     * &lt;/p&gt;
+     *
+     * @param hotel The hotel object that will be populated with room data from the CSV file.
+     */
+    @Override
+    public void execute(Hotel hotel){
+<span class="fc" id="L51">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L52">        System.out.println(&quot;File name: &quot;);</span>
+<span class="fc" id="L53">        String fileName = scanner.next();</span>
+<span class="fc" id="L54">        try (FileReader reader = new FileReader(fileName);</span>
+<span class="fc" id="L55">             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {</span>
+
+<span class="fc" id="L57">            ArrayList&lt;MyMap&lt;Integer, Room&gt;&gt; floors = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            for (CSVRecord csvRecord : csvParser) {</span>
+<span class="fc" id="L59">                int floorNumber = Integer.parseInt(csvRecord.get(&quot;Floor&quot;));</span>
+<span class="fc" id="L60">                int roomNumber = Integer.parseInt(csvRecord.get(&quot;RoomNumber&quot;));</span>
+<span class="fc" id="L61">                int capacity = Integer.parseInt(csvRecord.get(&quot;Capacity&quot;));</span>
+<span class="fc" id="L62">                float price = Float.parseFloat(csvRecord.get(&quot;Price&quot;));</span>
+<span class="fc" id="L63">                boolean isFree = Boolean.parseBoolean(csvRecord.get(&quot;IsFree&quot;));</span>
+<span class="fc" id="L64">                String mainGuestInfo = csvRecord.get(&quot;MainGuest&quot;);</span>
+<span class="fc" id="L65">                String otherGuestsInfo = csvRecord.get(&quot;OtherGuests&quot;);</span>
+<span class="fc" id="L66">                String checkInDate = csvRecord.get(&quot;DateOfCheckin&quot;);</span>
+<span class="fc" id="L67">                String lengthOfStayStr = csvRecord.get(&quot;LengthOfStay&quot;);</span>
+<span class="fc" id="L68">                String additionalData = csvRecord.get(&quot;AdditionalData&quot;);</span>
+
+<span class="fc" id="L70">                MyMap&lt;Integer, Room&gt; currentFloor = null;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">                if (floorNumber + 1 &gt; floors.size()) {</span>
+<span class="fc" id="L72">                    currentFloor = new MyMap&lt;&gt;();</span>
+<span class="fc" id="L73">                    floors.add(currentFloor);</span>
+                }
+<span class="fc" id="L75">                currentFloor = floors.get(floorNumber);</span>
+
+<span class="fc" id="L77">                int lengthOfStay = 0;</span>
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">                if (!&quot; &quot;.equals(lengthOfStayStr)) {</span>
+<span class="fc" id="L79">                    lengthOfStay = Integer.parseInt(lengthOfStayStr);</span>
+                }
+
+<span class="fc" id="L82">                Guest mainGuest = null;</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">                if (correctInfo(mainGuestInfo)) {</span>
+<span class="fc" id="L84">                    String[] mainGuestInfoArray = mainGuestInfo.split(&quot; &quot;);</span>
+<span class="fc" id="L85">                    mainGuest = new Guest(mainGuestInfoArray[0], mainGuestInfoArray[1]);</span>
+                }
+
+<span class="fc" id="L88">                ArrayList&lt;Guest&gt; otherGuests = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">                if (correctInfo(otherGuestsInfo)) {</span>
+<span class="fc" id="L90">                    String[] otherGuestsInfoArray = otherGuestsInfo.split(&quot;, &quot;);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">                    for (String otherGuest : otherGuestsInfoArray) {</span>
+<span class="fc" id="L92">                        String[] guestInfoArray = otherGuest.split(&quot; &quot;);</span>
+<span class="fc" id="L93">                        otherGuests.add(new Guest(guestInfoArray[0], guestInfoArray[1]));</span>
+                    }
+                }
+
+<span class="fc" id="L97">                Instant checkIn = null;</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">                if (correctInfo(checkInDate)) {</span>
+<span class="fc" id="L99">                    checkIn = Instant.parse(checkInDate);</span>
+                }
+
+<span class="fc" id="L102">                Room newRoom = new Room(floorNumber, roomNumber, price, capacity);</span>
+<span class="fc" id="L103">                newRoom.setMainGuest(mainGuest);</span>
+<span class="fc" id="L104">                newRoom.setOtherGuests(otherGuests);</span>
+<span class="fc" id="L105">                newRoom.setDateOfCheckin(checkIn);</span>
+<span class="fc" id="L106">                newRoom.setLengthOfStay(lengthOfStay);</span>
+<span class="fc" id="L107">                newRoom.setAdditionalData(additionalData);</span>
+<span class="fc" id="L108">                currentFloor.put(roomNumber, newRoom);</span>
+<span class="fc" id="L109">            }</span>
+<span class="fc" id="L110">            hotel.setFloors(floors);</span>
+<span class="fc" id="L111">        } catch (IOException e) {</span>
+<span class="fc" id="L112">            System.out.println(&quot;Error reading the file: &quot; + fileName);</span>
+<span class="fc" id="L113">        }</span>
+<span class="fc" id="L114">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

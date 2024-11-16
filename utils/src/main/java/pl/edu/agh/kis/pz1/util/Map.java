@@ -2,43 +2,49 @@ package pl.edu.agh.kis.pz1.util;
 
 import java.util.List;
 
+
+/**
+ * This interface defines the contract for a Map data structure.
+ */
 public interface Map<K, V> {
     /**
-     * Dodanie elementu do mapy pod podanym kluczem.
-     Jeśli podany klucz istnieje to metoda powinna podmienić wartość.
-     * @param key klucz (nie null)
-     * @param value wartość kryjącą się pod kluczem (nie null)
-     * @return true jeśli się uda dodać element, false jeśli nie
+     * Adds an element to the map under the given key.
+     * If the provided key already exists, the method should replace the existing value.
+     *
+     * @param key the key (not null)
+     * @param value the value associated with the key (not null)
+     * @return true if the element was successfully added, false otherwise
      */
     boolean put(K key, V value);
-/**
- * Usunięcie podanego klucza oraz wartości, która jest przechowywana pod tym
- kluczem.
- * @param key klucz do usunięcia
- * @return true jeśli uda się usunać klucz, false w przeciwnym przypadku
- *  */
 
-
+    /**
+     * Removes the specified key and the value associated with it from the map.
+     *
+     * @param key the key to be removed
+     * @return true if the key was successfully removed, false otherwise
+     */
     boolean remove(K key);
- /**
-  *  * Zwraca wartość pod podanym kluczem lub null jeśli nie ma podanego klucza.
-  *  * @param key klucz (nie null)
-  *  * @return wartość pod kluczem lub null jeśli nie ma wartości dla podanego klucza
-  *  */
 
+    /**
+     * Returns the value associated with the specified key, or null if the key does not exist in the map.
+     *
+     * @param key the key (not null)
+     * @return the value associated with the key, or null if the key does not exist
+     */
     V get(K key);
- /**
-  *  * Zwraca listę kluczy
-  *  * @return java.util.List lista kluczy
-  *  */
 
-
+    /**
+     * Returns a list of all the keys in the map.
+     *
+     * @return java.util.List a list of keys
+     */
     List<K> keys();
- /**
-  *  * Sprawdza czy podany klucz istnieje w mapie.
-  *  * @param key wartość klucza do sprawdzenia.
-  *  * @return true jeśli klucz istnieje.
-  *  */
 
+    /**
+     * Checks whether the specified key exists in the map.
+     *
+     * @param key the key to check
+     * @return true if the key exists in the map, false otherwise
+     */
     boolean contains(K key);
 }

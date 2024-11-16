@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.model</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.model;
+
+
+import lombok.*;
+import org.apache.commons.lang3.StringUtils;
+
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+
+/**
+ * Represents a room in a hotel.
+ * Each room has specific attributes related to its location, pricing, and occupancy.
+ * The class provides functionality for managing guest check-ins, calculating total prices, and displaying room information.
+ * &lt;p&gt;
+ * Rooms can be free or occupied, and they store information about the main guest, other guests, the check-in date, and additional room details.
+ * &lt;/p&gt;
+ */
+@Data
+public class Room {
+
+    private int floorNumber;
+    private int roomNumberOnFloor;
+
+    private int roomNumberInHotel;
+
+    private float price;
+
+    private int capacity;
+
+    private Guest mainGuest;
+
+    private ArrayList&lt;Guest&gt; otherGuests;
+
+    private Instant dateOfCheckin;
+
+    private String additionalData;
+
+    private int lengthOfStay;
+
+    /**
+     * Constructs a new Room object with specified attributes.
+     * This constructor initializes a room based on its floor number, room number, price, and capacity.
+     *
+     * @param floorNumber        The floor number where the room is located
+     * @param roomNumberInHotel  The unique room number across the entire hotel
+     * @param price              The price per night for staying in the room
+     * @param capacity           The maximum number of guests the room can accommodate
+     */
+<span class="fc" id="L50">    public Room(int floorNumber, int roomNumberInHotel, float price, int capacity) {</span>
+<span class="fc" id="L51">        this.floorNumber = floorNumber;</span>
+<span class="fc" id="L52">        this.price = price;</span>
+<span class="fc" id="L53">        this.capacity = capacity;</span>
+<span class="fc" id="L54">        this.roomNumberOnFloor = roomNumberInHotel - floorNumber*100;</span>
+<span class="fc" id="L55">        this.roomNumberInHotel = roomNumberInHotel;</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Determines whether the room is free (i.e., no main guest).
+     *
+     * @return true if the room is free, false if the room is occupied by a guest
+     */
+    public boolean isFree(){
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        return mainGuest == null;</span>
+    }
+
+    /**
+     * Frees up the room by setting the main guest to null.
+     * This method is typically used for check-out operations.
+     */
+    public void setFree(){
+<span class="fc" id="L72">        mainGuest = null;</span>
+<span class="fc" id="L73">        otherGuests = null;</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Calculates the total price for the stay in the room based on the number of days the room has been occupied.
+     *
+     * @return The total price for the stay, calculated by multiplying the room price by the number of days the guest has stayed
+     */
+    public float totalPrice(){
+<span class="fc" id="L82">        float totalPrice = 0;</span>
+<span class="fc" id="L83">        int numberOfDays = (int) ChronoUnit.DAYS.between(this.dateOfCheckin, Instant.now());</span>
+<span class="fc" id="L84">        totalPrice = price*numberOfDays;</span>
+<span class="fc" id="L85">        return totalPrice;</span>
+    }
+
+    /**
+     * Displays detailed information about the room, including its occupancy status, guest details, and additional data.
+     * This method is typically used to display detailed information for the front desk staff or customer.
+     *
+     * @return true if the information is displayed successfully
+     */
+    public boolean showInfo(){
+<span class="fc" id="L95">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
+<span class="fc" id="L96">        System.out.println(&quot;Room price: &quot; + price);</span>
+<span class="fc" id="L97">        System.out.println(&quot;Capacity: &quot; + capacity);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if(mainGuest != null){</span>
+<span class="fc" id="L99">            System.out.println(&quot;Room is occupied&quot;);</span>
+<span class="fc" id="L100">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
+<span class="pc bpc" id="L101" title="2 of 4 branches missed.">            if(otherGuests != null &amp;&amp; !otherGuests.isEmpty()){</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                for(Guest guest : otherGuests){</span>
+<span class="fc" id="L103">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
+<span class="fc" id="L104">                }</span>
+            }
+<span class="fc" id="L106">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
+<span class="fc" id="L107">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">            if(!StringUtils.isEmpty(additionalData)) {</span>
+<span class="fc" id="L109">                System.out.println(&quot;Additional data: &quot; + additionalData);</span>
+            }
+        }
+        else {
+<span class="fc" id="L113">            System.out.println(&quot;Room is free&quot;);</span>
+        }
+<span class="fc" id="L115">        return true;</span>
+    }
+
+    /**
+     * Lists basic information about the room, including its occupancy status, guest details, and check-in date.
+     * This method provides a summary of the room's status without showing detailed guest information.
+     *
+     * @return true if the information is listed successfully
+     */
+    public boolean listRoom(){
+<span class="fc" id="L125">        System.out.println(&quot;Room number: &quot; + roomNumberInHotel);</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">        if(mainGuest != null){</span>
+<span class="fc" id="L127">            System.out.println(&quot;Room is occupied&quot;);</span>
+<span class="fc" id="L128">            System.out.println(&quot;Main guest: &quot; + mainGuest.getName() + &quot; &quot; + mainGuest.getSurname());</span>
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">            if(otherGuests != null){</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">                for(Guest guest : otherGuests){</span>
+<span class="fc" id="L131">                    System.out.println(&quot;Extra guest: &quot; + guest.getName() + &quot; &quot; + guest.getSurname());</span>
+<span class="fc" id="L132">                }</span>
+            }
+<span class="fc" id="L134">            System.out.println(&quot;Date of checkin: &quot; + dateOfCheckin);</span>
+<span class="fc" id="L135">            System.out.println(&quot;Length of stay: &quot; + lengthOfStay);</span>
+        }
+        else {
+<span class="fc" id="L138">            System.out.println(&quot;Room is free&quot;);</span>
+        }
+<span class="fc" id="L140">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

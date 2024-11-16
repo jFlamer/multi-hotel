@@ -11,8 +11,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+/**
+ * The {@code hotelToCSV} class is responsible for exporting the hotel's room data to a CSV file.
+ * It converts the room and guest details from the hotel system into a CSV format and writes them to a file.
+ * The CSV file can later be used for data persistence or sharing.
+ * <p>
+ * The class includes methods to generate a CSV record for each room, including information about the room number,
+ * capacity, price, guest details (main and other guests), check-in date, length of stay, and additional data.
+ * </p>
+ */
 public class hotelToCSV extends Command {
 
+    /**
+     * Converts the list of other guests in the room to a string format for CSV output.
+     * The guests' names and surnames are concatenated with commas separating each guest.
+     *
+     * @param currentRoom The room whose other guests are to be converted into a string.
+     * @return A string representing the other guests in the room, separated by commas.
+     */
     private String otherguestsToString(Room currentRoom) {
         String otherGuestsString = "";
         if (currentRoom.getOtherGuests() != null && !currentRoom.getOtherGuests().isEmpty()) {
@@ -24,6 +41,16 @@ public class hotelToCSV extends Command {
         return otherGuestsString;
     }
 
+    /**
+     * Writes the records of all rooms on a specific floor to the CSV printer.
+     * For each room, it gathers information such as room number, capacity, price,
+     * guest details, and additional room information and writes it as a CSV record.
+     *
+     * @param currentFloor The floor whose rooms need to be written to the CSV.
+     * @param printer The {@link CSVPrinter} used to print the records to the CSV file.
+     * @param floorNumber The number of the floor for the current set of rooms.
+     * @throws IOException If an I/O error occurs during the CSV writing process.
+     */
     private void printRecordToCsv(MyMap<Integer, Room> currentFloor, CSVPrinter printer, int floorNumber) throws IOException {
         for(int j = 0; j < currentFloor.keys().size(); j++) {
             int roomNumber = (int)currentFloor.keys().get(j);
@@ -37,7 +64,7 @@ public class hotelToCSV extends Command {
                     currentRoom.getPrice(),
                     currentRoom.isFree(),
                     currentRoom.getMainGuest() != null ? currentRoom.getMainGuest().getInfo() : null,
-                    otherGuestsString != null && !otherGuestsString.isEmpty()  ? otherGuestsString : " ",
+                    otherGuestsString != null && !otherGuestsString.isEmpty() && !" ".equals(otherGuestsString) ? otherGuestsString : " ",
                     currentRoom.getDateOfCheckin() != null ? currentRoom.getDateOfCheckin(): " ",
                     currentRoom.getLengthOfStay() != 0 ? currentRoom.getLengthOfStay() : " ",
                     currentRoom.getAdditionalData() != null ? currentRoom.getAdditionalData() : null
@@ -45,6 +72,17 @@ public class hotelToCSV extends Command {
         }
     }
 
+    /**
+     * Executes the process of exporting hotel room data to a CSV file.
+     * The user is prompted to enter the desired file name, and the room data (from all hotel floors)
+     * is then written to the specified file in CSV format.
+     * <p>
+     * This method loops over all floors of the hotel, collects data from each room,
+     * and writes the data to the CSV file using the {@link CSVPrinter}.
+     * </p>
+     *
+     * @param hotel The hotel whose room data is to be exported to CSV.
+     */
     @Override
     public void execute(Hotel hotel) {
         Scanner scanner = new Scanner(System.in);

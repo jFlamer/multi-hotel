@@ -11,7 +11,6 @@
   <artifactId>main</artifactId>
   <name>Modul glowny aplikacji - klasa Main z metoda main</name>
 
-  <!-- Dodane przez pskrzynski -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -33,7 +32,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.6.0</version> <!-- podbita wersja z 2.6 na 3.6.0 by pskrzynski -->
+        <version>3.6.0</version>
         <configuration>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -67,7 +66,6 @@
     </plugins>
   </build> 
 
-  <!-- najświeższa wersja w otwartym repo maven to 4.13.2 -->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

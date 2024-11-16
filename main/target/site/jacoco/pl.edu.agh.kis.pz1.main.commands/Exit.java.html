@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Exit.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Modul glowny aplikacji - klasa Main z metoda main</a> &gt; <a href="index.source.html" class="el_package">pl.edu.agh.kis.pz1.main.commands</a> &gt; <span class="el_source">Exit.java</span></div><h1>Exit.java</h1><pre class="source lang-java linenums">package pl.edu.agh.kis.pz1.main.commands;
+
+import pl.edu.agh.kis.pz1.main.model.Hotel;
+
+/**
+ * The {@code Exit} class handles the process of terminating the hotel management system.
+ * When executed, this command will terminate the application by invoking {@link System#exit(int)}.
+ * It is typically used when the user wishes to exit the hotel system gracefully.
+ * &lt;p&gt;
+ * This class does not interact with the hotel or modify any data but simply ends the program execution.
+ * &lt;/p&gt;
+ */
+<span class="nc" id="L13">public class Exit extends Command {</span>
+
+    /**
+     * Executes the exit command, which terminates the application.
+     * This method does not perform any operations on the {@link Hotel} object as the exit command
+     * is intended solely to stop the program.
+     * &lt;p&gt;
+     * When this command is executed, it calls {@link System#exit(int)} with a status code of 0,
+     * which will terminate the JVM and end the execution of the program.
+     * &lt;/p&gt;
+     *
+     * @param hotel The {@link Hotel} object, which is not used in this command.
+     */
+    @Override
+    public void execute(Hotel hotel) {
+<span class="nc" id="L28">        System.exit(0);</span>
+<span class="nc" id="L29">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

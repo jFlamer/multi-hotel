@@ -11,6 +11,10 @@ import java.util.ArrayList;
 /**
  * Represents a room in a hotel.
  * Each room has specific attributes related to its location, pricing, and occupancy.
+ * The class provides functionality for managing guest check-ins, calculating total prices, and displaying room information.
+ * <p>
+ * Rooms can be free or occupied, and they store information about the main guest, other guests, the check-in date, and additional room details.
+ * </p>
  */
 @Data
 public class Room {
@@ -36,11 +40,12 @@ public class Room {
 
     /**
      * Constructs a new Room object with specified attributes.
+     * This constructor initializes a room based on its floor number, room number, price, and capacity.
      *
-     * @param floorNumber         the floor number where the room is located
-     * @param roomNumberInHotel   the room number
-     * @param price               the price per night for staying in the room
-     * @param capacity            the maximum number of guests that can stay in the room
+     * @param floorNumber        The floor number where the room is located
+     * @param roomNumberInHotel  The unique room number across the entire hotel
+     * @param price              The price per night for staying in the room
+     * @param capacity           The maximum number of guests the room can accommodate
      */
     public Room(int floorNumber, int roomNumberInHotel, float price, int capacity) {
         this.floorNumber = floorNumber;
@@ -50,15 +55,29 @@ public class Room {
         this.roomNumberInHotel = roomNumberInHotel;
     }
 
-
+    /**
+     * Determines whether the room is free (i.e., no main guest).
+     *
+     * @return true if the room is free, false if the room is occupied by a guest
+     */
     public boolean isFree(){
         return mainGuest == null;
     }
 
+    /**
+     * Frees up the room by setting the main guest to null.
+     * This method is typically used for check-out operations.
+     */
     public void setFree(){
         mainGuest = null;
+        otherGuests = null;
     }
 
+    /**
+     * Calculates the total price for the stay in the room based on the number of days the room has been occupied.
+     *
+     * @return The total price for the stay, calculated by multiplying the room price by the number of days the guest has stayed
+     */
     public float totalPrice(){
         float totalPrice = 0;
         int numberOfDays = (int) ChronoUnit.DAYS.between(this.dateOfCheckin, Instant.now());
@@ -66,6 +85,12 @@ public class Room {
         return totalPrice;
     }
 
+    /**
+     * Displays detailed information about the room, including its occupancy status, guest details, and additional data.
+     * This method is typically used to display detailed information for the front desk staff or customer.
+     *
+     * @return true if the information is displayed successfully
+     */
     public boolean showInfo(){
         System.out.println("Room number: " + roomNumberInHotel);
         System.out.println("Room price: " + price);
@@ -73,7 +98,7 @@ public class Room {
         if(mainGuest != null){
             System.out.println("Room is occupied");
             System.out.println("Main guest: " + mainGuest.getName() + " " + mainGuest.getSurname());
-            if(otherGuests != null){
+            if(otherGuests != null && !otherGuests.isEmpty()){
                 for(Guest guest : otherGuests){
                     System.out.println("Extra guest: " + guest.getName() + " " + guest.getSurname());
                 }
@@ -89,6 +114,13 @@ public class Room {
         }
         return true;
     }
+
+    /**
+     * Lists basic information about the room, including its occupancy status, guest details, and check-in date.
+     * This method provides a summary of the room's status without showing detailed guest information.
+     *
+     * @return true if the information is listed successfully
+     */
     public boolean listRoom(){
         System.out.println("Room number: " + roomNumberInHotel);
         if(mainGuest != null){
