@@ -1,6 +1,0 @@
-projectKey=pl.edu.agh.kis.pz1:multi-hotel
-serverUrl=http://127.0.0.1:9000
-serverVersion=10.7.0.96327
-dashboardUrl=http://127.0.0.1:9000/dashboard?id=pl.edu.agh.kis.pz1%3Amulti-hotel
-ceTaskId=19129677-363e-4845-a62f-2fc684b6bc3f
-ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=19129677-363e-4845-a62f-2fc684b6bc3f

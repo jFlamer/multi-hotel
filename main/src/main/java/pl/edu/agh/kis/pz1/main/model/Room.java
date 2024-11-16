@@ -38,7 +38,7 @@ public class Room {
      * Constructs a new Room object with specified attributes.
      *
      * @param floorNumber         the floor number where the room is located
-     * @param roomNumberInHotel   the room number within the specific floor
+     * @param roomNumberInHotel   the room number
      * @param price               the price per night for staying in the room
      * @param capacity            the maximum number of guests that can stay in the room
      */

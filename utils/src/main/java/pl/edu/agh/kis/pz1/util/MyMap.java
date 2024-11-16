@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyMap<K, V> implements Map {
+public class MyMap<K, V> implements Map<K, V> {
     private ArrayList<K> keys;
     private ArrayList<V> values;
 

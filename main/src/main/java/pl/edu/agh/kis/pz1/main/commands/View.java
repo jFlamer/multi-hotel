@@ -14,7 +14,7 @@ public class View extends Command {
         Room currentRoom = hotel.getRoomByNumber(roomNumber);
         if (currentRoom == null) {
             System.out.println("Room not found");
-            //return false;
+            return;
         }
         else {
             currentRoom.showInfo();

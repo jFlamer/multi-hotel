@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class hotelFromCSV extends Command {
+    private boolean correctInfo(String obj){
+        return obj != null && !obj.isEmpty() && !" ".equals(obj);
+    }
+
     @Override
     public void execute(Hotel hotel){
         Scanner scanner = new Scanner(System.in);
@@ -23,25 +27,24 @@ public class hotelFromCSV extends Command {
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {
 
             ArrayList<MyMap<Integer, Room>> floors = new ArrayList<>();
-            for (CSVRecord record : csvParser) {
-                int floorNumber = Integer.parseInt(record.get("Floor"));
-                int roomNumber = Integer.parseInt(record.get("RoomNumber"));
-                int capacity = Integer.parseInt(record.get("Capacity"));
-                float price = Float.parseFloat(record.get("Price"));
-                boolean isFree = Boolean.parseBoolean(record.get("IsFree"));
-                String mainGuestInfo = record.get("MainGuest");
-                String otherGuestsInfo = record.get("OtherGuests");
-                String checkInDate = record.get("DateOfCheckin");
-                String lengthOfStayStr = record.get("LengthOfStay");
-                String additionalData = record.get("AdditionalData");
+            for (CSVRecord csvRecord : csvParser) {
+                int floorNumber = Integer.parseInt(csvRecord.get("Floor"));
+                int roomNumber = Integer.parseInt(csvRecord.get("RoomNumber"));
+                int capacity = Integer.parseInt(csvRecord.get("Capacity"));
+                float price = Float.parseFloat(csvRecord.get("Price"));
+                boolean isFree = Boolean.parseBoolean(csvRecord.get("IsFree"));
+                String mainGuestInfo = csvRecord.get("MainGuest");
+                String otherGuestsInfo = csvRecord.get("OtherGuests");
+                String checkInDate = csvRecord.get("DateOfCheckin");
+                String lengthOfStayStr = csvRecord.get("LengthOfStay");
+                String additionalData = csvRecord.get("AdditionalData");
 
                 MyMap<Integer, Room> currentFloor = null;
                 if (floorNumber + 1 > floors.size()) {
                     currentFloor = new MyMap<>();
                     floors.add(currentFloor);
-                } else {
-                    currentFloor = floors.get(floorNumber);
                 }
+                currentFloor = floors.get(floorNumber);
 
                 int lengthOfStay = 0;
                 if (!" ".equals(lengthOfStayStr)) {
@@ -49,13 +52,13 @@ public class hotelFromCSV extends Command {
                 }
 
                 Guest mainGuest = null;
-                if (mainGuestInfo != null && !mainGuestInfo.isEmpty() && !" ".equals(mainGuestInfo)) {
+                if (correctInfo(mainGuestInfo)) {
                     String[] mainGuestInfoArray = mainGuestInfo.split(" ");
                     mainGuest = new Guest(mainGuestInfoArray[0], mainGuestInfoArray[1]);
                 }
 
                 ArrayList<Guest> otherGuests = new ArrayList<>();
-                if (otherGuestsInfo != null && !otherGuestsInfo.isEmpty() && !" ".equals(otherGuestsInfo)) {
+                if (correctInfo(otherGuestsInfo)) {
                     String[] otherGuestsInfoArray = otherGuestsInfo.split(", ");
                     for (String otherGuest : otherGuestsInfoArray) {
                         String[] guestInfoArray = otherGuest.split(" ");
@@ -64,7 +67,7 @@ public class hotelFromCSV extends Command {
                 }
 
                 Instant checkIn = null;
-                if (checkInDate != null && !checkInDate.isEmpty() && !" ".equals(checkInDate)) {
+                if (correctInfo(checkInDate)) {
                     checkIn = Instant.parse(checkInDate);
                 }
 
@@ -78,8 +81,7 @@ public class hotelFromCSV extends Command {
             }
             hotel.setFloors(floors);
         } catch (IOException e) {
-            System.err.println("Error reading the file: " + fileName);
-            e.printStackTrace();
+            System.out.println("Error reading the file: " + fileName);
         }
     }
 }

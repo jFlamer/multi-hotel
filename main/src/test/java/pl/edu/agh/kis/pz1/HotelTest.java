@@ -12,7 +12,6 @@ class HotelTest {
 
     private Hotel hotel;
     private Room room1, room2, room3;
-    private MyMap<Integer, Room> floor1, floor2;
 
     @BeforeEach
     void setUp() {
