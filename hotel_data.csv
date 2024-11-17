@@ -1,7 +1,7 @@
 Floor,RoomNumber,Capacity,Price,IsFree,MainGuest,OtherGuests,DateOfCheckin,LengthOfStay,AdditionalData
 0,101,2,104.0,true,, , , ,
 1,101,2,100.5,true,, , , ,
-1,102,3,150.0,false,John Doe,Jane Smith,2024-11-01T10:00:00Z,5,No special requests
+1,102,3,150.0,false,John Doe,Jane Smith; Tony Stark,2024-11-01T10:00:00Z,5,No special requests
 1,103,2,100.5,true,, , , ,
 2,201,1,75.0,true,Mary Johnson, ,2024-11-10T08:00:00Z,7,Early check-in requested
 2,202,4,200.0,false,Ada Lovelace,Grace Hopper,2024-11-13T09:00:00Z,6,Discussing algorithms

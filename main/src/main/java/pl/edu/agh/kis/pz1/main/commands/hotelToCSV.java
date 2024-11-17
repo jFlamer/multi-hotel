@@ -33,10 +33,17 @@ public class hotelToCSV extends Command {
     private String otherguestsToString(Room currentRoom) {
         String otherGuestsString = "";
         if (currentRoom.getOtherGuests() != null && !currentRoom.getOtherGuests().isEmpty()) {
-            for(Guest guest : currentRoom.getOtherGuests()) {
-                otherGuestsString += guest.getName() + " " + guest.getSurname() + ",";
+            Guest guest = currentRoom.getOtherGuests().get(0);
+            if (guest != null) {
+                otherGuestsString += guest.getName() + " " + guest.getSurname() + "; ";
+                for (int i = 1; i < currentRoom.getOtherGuests().size(); i++) {
+                    guest = currentRoom.getOtherGuests().get(i);
+                    if (guest != null) {
+                        otherGuestsString += guest.getName() + " " + guest.getSurname() + "; ";
+                    }
+                }
+                otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 2);
             }
-            otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 1);
         }
         return otherGuestsString;
     }
@@ -95,6 +102,7 @@ public class hotelToCSV extends Command {
                 printRecordToCsv(currentFloor, csvPrinter, i);
             }
         } catch (IOException e) {
+            System.out.println("Error saving the file: " + fileName);
         }
     }
 }

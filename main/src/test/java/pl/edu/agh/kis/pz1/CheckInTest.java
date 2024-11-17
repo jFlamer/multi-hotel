@@ -12,6 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -136,6 +137,32 @@ class CheckInTest {
     }
 
     @Test
+    void testScanGuestDataWithEmptyInput() {
+        // Simulate empty input for both name and surname
+        String simulatedInput = "\n\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Call the method with capacity and guest number
+        Guest guest = checkInCommand.scanGuestData(2, 1);
+
+        // Validate that the returned Guest object is null
+        assertNull(guest, "Guest should be null if name or surname is empty.");
+    }
+
+    @Test
+    void testScanGuestDataWithPartialEmptyInput() {
+        // Simulate input with name provided but surname empty
+        String simulatedInput = "John\n\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Call the method with capacity and guest number
+        Guest guest = checkInCommand.scanGuestData(2, 1);
+
+        // Validate that the returned Guest object is null
+        assertTrue(guest.getSurname().isEmpty(), "Guest surname should be empty.");
+    }
+
+    @Test
     void testSetUserDateOfCheckin() {
         // Simulate user input for a check-in date
         String simulatedInput = "2024-11-16\n";
@@ -152,6 +179,45 @@ class CheckInTest {
                 "Date of check-in should match the simulated input."
         );
     }
+
+    @Test
+    void testSetUserDateOfCheckinWithEmptyInput() {
+        // Simulate empty input for the date
+        String simulatedInput = "\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Call the method
+        String returnedDate = checkInCommand.setUserDateOfCheckin();
+
+        // Get the current date (truncated to days) for comparison
+        Instant expectedDate = Instant.now().truncatedTo(ChronoUnit.DAYS);
+
+        // Verify the returned date is in the expected format
+        assertNotNull(returnedDate, "Returned date should not be null.");
+        assertEquals(expectedDate.toString(), checkInCommand.getCheckInTime().toString(),
+                "Check-in time should be set to today's date when input is empty.");
+    }
+
+    @Test
+    void testSetUserDateOfCheckinWithValidInput() {
+        // Simulate valid input for the date
+        String simulatedInput = "2023-11-15\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Call the method
+        String returnedDate = checkInCommand.setUserDateOfCheckin();
+
+        // Expected result
+        Instant expectedDate = Instant.parse("2023-11-15T00:00:00Z");
+
+        // Verify the returned date and the room's check-in time
+        assertNotNull(returnedDate, "Returned date should not be null.");
+        assertEquals("2023-11-15T00:00:00Z", returnedDate,
+                "Returned date should match the input date with added time suffix.");
+        assertEquals(expectedDate, checkInCommand.getCheckInTime(),
+                "Check-in time should be set to the parsed input date.");
+    }
+
 
     @Test
     void testSetUserLengthOfStay() {

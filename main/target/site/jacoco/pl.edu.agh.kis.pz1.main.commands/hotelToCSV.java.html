@@ -33,12 +33,19 @@ import java.util.Scanner;
     private String otherguestsToString(Room currentRoom) {
 <span class="fc" id="L34">        String otherGuestsString = &quot;&quot;;</span>
 <span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (currentRoom.getOtherGuests() != null &amp;&amp; !currentRoom.getOtherGuests().isEmpty()) {</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">            for(Guest guest : currentRoom.getOtherGuests()) {</span>
-<span class="fc" id="L37">                otherGuestsString += guest.getName() + &quot; &quot; + guest.getSurname() + &quot;,&quot;;</span>
-<span class="fc" id="L38">            }</span>
-<span class="fc" id="L39">            otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 1);</span>
+<span class="fc" id="L36">            Guest guest = currentRoom.getOtherGuests().get(0);</span>
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (guest != null) {</span>
+<span class="fc" id="L38">                otherGuestsString += guest.getName() + &quot; &quot; + guest.getSurname() + &quot;; &quot;;</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">                for (int i = 1; i &lt; currentRoom.getOtherGuests().size(); i++) {</span>
+<span class="nc" id="L40">                    guest = currentRoom.getOtherGuests().get(i);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                    if (guest != null) {</span>
+<span class="nc" id="L42">                        otherGuestsString += guest.getName() + &quot; &quot; + guest.getSurname() + &quot;; &quot;;</span>
+                    }
+                }
+<span class="fc" id="L45">                otherGuestsString = otherGuestsString.substring(0, otherGuestsString.length() - 2);</span>
+            }
         }
-<span class="fc" id="L41">        return otherGuestsString;</span>
+<span class="fc" id="L48">        return otherGuestsString;</span>
     }
 
     /**
@@ -52,25 +59,25 @@ import java.util.Scanner;
      * @throws IOException If an I/O error occurs during the CSV writing process.
      */
     private void printRecordToCsv(MyMap&lt;Integer, Room&gt; currentFloor, CSVPrinter printer, int floorNumber) throws IOException {
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        for(int j = 0; j &lt; currentFloor.keys().size(); j++) {</span>
-<span class="fc" id="L56">            int roomNumber = (int)currentFloor.keys().get(j);</span>
-<span class="fc" id="L57">            Room currentRoom = currentFloor.get(roomNumber);</span>
-<span class="fc" id="L58">            String otherGuestsString = otherguestsToString(currentRoom);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        for(int j = 0; j &lt; currentFloor.keys().size(); j++) {</span>
+<span class="fc" id="L63">            int roomNumber = (int)currentFloor.keys().get(j);</span>
+<span class="fc" id="L64">            Room currentRoom = currentFloor.get(roomNumber);</span>
+<span class="fc" id="L65">            String otherGuestsString = otherguestsToString(currentRoom);</span>
 
-<span class="fc" id="L60">            printer.printRecord(</span>
-<span class="fc" id="L61">                    floorNumber,</span>
-<span class="fc" id="L62">                    roomNumber,</span>
-<span class="fc" id="L63">                    currentRoom.getCapacity(),</span>
-<span class="fc" id="L64">                    currentRoom.getPrice(),</span>
-<span class="fc" id="L65">                    currentRoom.isFree(),</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">                    currentRoom.getMainGuest() != null ? currentRoom.getMainGuest().getInfo() : null,</span>
-<span class="pc bpc" id="L67" title="2 of 6 branches missed.">                    otherGuestsString != null &amp;&amp; !otherGuestsString.isEmpty() &amp;&amp; !&quot; &quot;.equals(otherGuestsString) ? otherGuestsString : &quot; &quot;,</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">                    currentRoom.getDateOfCheckin() != null ? currentRoom.getDateOfCheckin(): &quot; &quot;,</span>
-<span class="fc bfc" id="L69" title="All 2 branches covered.">                    currentRoom.getLengthOfStay() != 0 ? currentRoom.getLengthOfStay() : &quot; &quot;,</span>
-<span class="fc bfc" id="L70" title="All 2 branches covered.">                    currentRoom.getAdditionalData() != null ? currentRoom.getAdditionalData() : null</span>
+<span class="fc" id="L67">            printer.printRecord(</span>
+<span class="fc" id="L68">                    floorNumber,</span>
+<span class="fc" id="L69">                    roomNumber,</span>
+<span class="fc" id="L70">                    currentRoom.getCapacity(),</span>
+<span class="fc" id="L71">                    currentRoom.getPrice(),</span>
+<span class="fc" id="L72">                    currentRoom.isFree(),</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">                    currentRoom.getMainGuest() != null ? currentRoom.getMainGuest().getInfo() : null,</span>
+<span class="pc bpc" id="L74" title="2 of 6 branches missed.">                    otherGuestsString != null &amp;&amp; !otherGuestsString.isEmpty() &amp;&amp; !&quot; &quot;.equals(otherGuestsString) ? otherGuestsString : &quot; &quot;,</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                    currentRoom.getDateOfCheckin() != null ? currentRoom.getDateOfCheckin(): &quot; &quot;,</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                    currentRoom.getLengthOfStay() != 0 ? currentRoom.getLengthOfStay() : &quot; &quot;,</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">                    currentRoom.getAdditionalData() != null ? currentRoom.getAdditionalData() : null</span>
             );
         }
-<span class="fc" id="L73">    }</span>
+<span class="fc" id="L80">    }</span>
 
     /**
      * Executes the process of exporting hotel room data to a CSV file.
@@ -85,17 +92,18 @@ import java.util.Scanner;
      */
     @Override
     public void execute(Hotel hotel) {
-<span class="fc" id="L88">        Scanner scanner = new Scanner(System.in);</span>
-<span class="fc" id="L89">        System.out.println(&quot;File name: &quot;);</span>
-<span class="fc" id="L90">        String fileName = scanner.next();</span>
-<span class="fc" id="L91">        try(FileWriter fileWriter = new FileWriter(fileName);</span>
-<span class="fc" id="L92">            CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(&quot;Floor&quot;, &quot;RoomNumber&quot;,&quot;Capacity&quot;, &quot;Price&quot;, &quot;IsFree&quot;, &quot;MainGuest&quot;, &quot;OtherGuests&quot;, &quot;DateOfCheckin&quot;, &quot;LengthOfStay&quot;, &quot;AdditionalData&quot;))){</span>
-<span class="fc bfc" id="L93" title="All 2 branches covered.">            for(int i = 0; i &lt; hotel.getFloors().size(); i++) {</span>
-<span class="fc" id="L94">                MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
-<span class="fc" id="L95">                printRecordToCsv(currentFloor, csvPrinter, i);</span>
+<span class="fc" id="L95">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L96">        System.out.println(&quot;File name: &quot;);</span>
+<span class="fc" id="L97">        String fileName = scanner.next();</span>
+<span class="fc" id="L98">        try(FileWriter fileWriter = new FileWriter(fileName);</span>
+<span class="fc" id="L99">            CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withHeader(&quot;Floor&quot;, &quot;RoomNumber&quot;,&quot;Capacity&quot;, &quot;Price&quot;, &quot;IsFree&quot;, &quot;MainGuest&quot;, &quot;OtherGuests&quot;, &quot;DateOfCheckin&quot;, &quot;LengthOfStay&quot;, &quot;AdditionalData&quot;))){</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">            for(int i = 0; i &lt; hotel.getFloors().size(); i++) {</span>
+<span class="fc" id="L101">                MyMap&lt;Integer, Room&gt; currentFloor = hotel.getFloors().get(i);</span>
+<span class="fc" id="L102">                printRecordToCsv(currentFloor, csvPrinter, i);</span>
             }
-<span class="nc" id="L97">        } catch (IOException e) {</span>
-<span class="fc" id="L98">        }</span>
-<span class="fc" id="L99">    }</span>
+<span class="nc" id="L104">        } catch (IOException e) {</span>
+<span class="nc" id="L105">            System.out.println(&quot;Error saving the file: &quot; + fileName);</span>
+<span class="fc" id="L106">        }</span>
+<span class="fc" id="L107">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

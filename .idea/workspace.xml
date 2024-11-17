@@ -7,26 +7,62 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="add more tests">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="312ac839-d08a-49f4-91e7-5a5d30ff1cd0" name="Changes" comment="chyba dziala">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/CheckOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Exit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/HotelSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/HotelSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/List.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Prices.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/Prices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel_state.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_state.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelFromCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelFromCSV.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelToCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/commands/hotelToCSV.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Guest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Hotel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/pl/edu/agh/kis/pz1/main/model/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/test/java/pl/edu/agh/kis/pz1/CheckInTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/java/pl/edu/agh/kis/pz1/CheckInTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/src/main/java/pl/edu/agh/kis/pz1/util/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/src/main/java/pl/edu/agh/kis/pz1/util/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/src/main/java/pl/edu/agh/kis/pz1/util/MyMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/utils/src/main/java/pl/edu/agh/kis/pz1/util/MyMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/commands/hotelFromCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/commands/hotelFromCSV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/commands/hotelToCSV.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/commands/hotelToCSV.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/pl/edu/agh/kis/pz1/main/model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/main-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/CheckIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/CheckIn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/CheckIn.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/CheckIn.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelFromCSV.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelFromCSV.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelToCSV.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelToCSV.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelToCSV.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/hotelToCSV.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.commands/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/Room.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/Room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/Room.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/Room.java.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/site/jacoco/pl.edu.agh.kis.pz1.main.model/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/2024-11-16T15-58-27_276.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.CheckInTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.CheckInTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.CheckOutTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.CheckOutTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.GuestTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.GuestTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelFromCSVTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelFromCSVTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelToCSVTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.HotelToCSVTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.ListTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.ListTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.MainTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.MainTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.PricesTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.PricesTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.RoomTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.RoomTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.ViewTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.ViewTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.CheckInTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.CheckInTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.HotelTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.HotelTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.HotelToCSVTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.HotelToCSVTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.MainTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.MainTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.PricesTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.PricesTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.RoomTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.RoomTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.ViewTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/surefire-reports/pl.edu.agh.kis.pz1.ViewTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/test-classes/pl/edu/agh/kis/pz1/CheckInTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/test-classes/pl/edu/agh/kis/pz1/CheckInTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/surefire-reports/2024-11-16T15-58-27_276.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.util.MyMapTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/surefire-reports/TEST-pl.edu.agh.kis.pz1.util.MyMapTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/surefire-reports/pl.edu.agh.kis.pz1.util.MyMapTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/surefire-reports/pl.edu.agh.kis.pz1.util.MyMapTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/utils-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-1.0.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +109,12 @@
     "JUnit.CheckInTest.testCheckInRoomWhenRoomIsFree.executor": "Run",
     "JUnit.CheckInTest.testCheckInRoomWhenRoomIsOccupied.executor": "Run",
     "JUnit.CheckInTest.testScanGuestData.executor": "Run",
+    "JUnit.CheckInTest.testScanGuestDataWithEmptyInput.executor": "Run",
+    "JUnit.CheckInTest.testScanGuestDataWithPartialEmptyInput.executor": "Run",
     "JUnit.CheckInTest.testSetUserAdditionalInfo.executor": "Run",
     "JUnit.CheckInTest.testSetUserDateOfCheckin.executor": "Run",
+    "JUnit.CheckInTest.testSetUserDateOfCheckinWithEmptyInput.executor": "Run",
+    "JUnit.CheckInTest.testSetUserDateOfCheckinWithValidInput.executor": "Run",
     "JUnit.CheckInTest.testSetUserLengthOfStay.executor": "Run",
     "JUnit.CheckOutTest.testCheckOutFreeRoom.executor": "Run",
     "JUnit.CheckOutTest.testCheckOutNonExistentRoom.executor": "Run",
@@ -157,7 +197,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckInTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckInTest.testScanGuestDataWithEmptyInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="main" />
       <extension name="coverage">
         <pattern>
@@ -167,28 +207,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
       <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.CheckInTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CheckInTest.testSetUserAdditionalInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
-      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.CheckInTest" />
-      <option name="METHOD_NAME" value="testSetUserAdditionalInfo" />
+      <option name="METHOD_NAME" value="testScanGuestDataWithEmptyInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckInTest.testSetUserDateOfCheckin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckInTest.testScanGuestDataWithPartialEmptyInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="main" />
       <extension name="coverage">
         <pattern>
@@ -198,13 +223,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
       <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.CheckInTest" />
-      <option name="METHOD_NAME" value="testSetUserDateOfCheckin" />
+      <option name="METHOD_NAME" value="testScanGuestDataWithPartialEmptyInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CheckInTest.testSetUserLengthOfStay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CheckInTest.testSetUserDateOfCheckinWithEmptyInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="main" />
       <extension name="coverage">
         <pattern>
@@ -214,7 +239,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
       <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.CheckInTest" />
-      <option name="METHOD_NAME" value="testSetUserLengthOfStay" />
+      <option name="METHOD_NAME" value="testSetUserDateOfCheckinWithEmptyInput" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckInTest.testSetUserDateOfCheckinWithValidInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.edu.agh.kis.pz1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.edu.agh.kis.pz1" />
+      <option name="MAIN_CLASS_NAME" value="pl.edu.agh.kis.pz1.CheckInTest" />
+      <option name="METHOD_NAME" value="testSetUserDateOfCheckinWithValidInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -223,10 +264,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CheckInTest" />
-        <item itemvalue="JUnit.CheckInTest.testSetUserAdditionalInfo" />
-        <item itemvalue="JUnit.CheckInTest.testSetUserLengthOfStay" />
-        <item itemvalue="JUnit.CheckInTest.testSetUserDateOfCheckin" />
+        <item itemvalue="JUnit.CheckInTest.testSetUserDateOfCheckinWithValidInput" />
+        <item itemvalue="JUnit.CheckInTest.testSetUserDateOfCheckinWithEmptyInput" />
+        <item itemvalue="JUnit.CheckInTest.testScanGuestDataWithPartialEmptyInput" />
+        <item itemvalue="JUnit.CheckInTest.testScanGuestDataWithEmptyInput" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +294,8 @@
       <workItem from="1731140410577" duration="5550000" />
       <workItem from="1731145990786" duration="2389000" />
       <workItem from="1731661881180" duration="24301000" />
-      <workItem from="1731748384437" duration="18891000" />
+      <workItem from="1731748384437" duration="19131000" />
+      <workItem from="1731863151937" duration="6740000" />
     </task>
     <task id="LOCAL-00001" summary="added prices method, view, checkout, and list">
       <option name="closed" value="true" />
@@ -311,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731760713544</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="chyba dziala">
+      <option name="closed" value="true" />
+      <created>1731769125808</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731769125808</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +385,8 @@
     <MESSAGE value="using class command and inheritance" />
     <MESSAGE value="add model tests" />
     <MESSAGE value="add more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add more tests" />
+    <MESSAGE value="chyba dziala" />
+    <option name="LAST_COMMIT_MESSAGE" value="chyba dziala" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

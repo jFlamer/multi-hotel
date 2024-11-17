@@ -98,10 +98,17 @@ public class Room {
         if(mainGuest != null){
             System.out.println("Room is occupied");
             System.out.println("Main guest: " + mainGuest.getName() + " " + mainGuest.getSurname());
-            if(otherGuests != null && !otherGuests.isEmpty()){
-                for(Guest guest : otherGuests){
-                    System.out.println("Extra guest: " + guest.getName() + " " + guest.getSurname());
+            if(!otherGuests.isEmpty() && otherGuests.get(0)!=null){
+                Guest guest = otherGuests.get(0);
+                String extraGuest = "Extra guest: ";
+                System.out.println(extraGuest + guest.getName() + " " + guest.getSurname());
+                for(int i = 1; i < otherGuests.size(); i++){
+                    guest = otherGuests.get(i);
+                    if(guest != null){
+                        System.out.println(extraGuest + guest.getName() + " " + guest.getSurname());
+                    }
                 }
+
             }
             System.out.println("Date of checkin: " + dateOfCheckin);
             System.out.println("Length of stay: " + lengthOfStay);
@@ -126,9 +133,15 @@ public class Room {
         if(mainGuest != null){
             System.out.println("Room is occupied");
             System.out.println("Main guest: " + mainGuest.getName() + " " + mainGuest.getSurname());
-            if(otherGuests != null){
-                for(Guest guest : otherGuests){
-                    System.out.println("Extra guest: " + guest.getName() + " " + guest.getSurname());
+            if(!otherGuests.isEmpty() && otherGuests.get(0)!=null){
+                Guest guest = otherGuests.get(0);
+                String extraGuest = "Extra guest: ";
+                System.out.println(extraGuest + guest.getName() + " " + guest.getSurname());
+                for(int i = 1; i < otherGuests.size(); i++){
+                    guest = otherGuests.get(i);
+                    if(guest != null){
+                        System.out.println(extraGuest + guest.getName() + " " + guest.getSurname());
+                    }
                 }
             }
             System.out.println("Date of checkin: " + dateOfCheckin);

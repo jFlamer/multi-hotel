@@ -1,14 +1,14 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.model,Guest,0,15,0,0,0,5,0,2,0,2
-Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.model,Room,0,192,3,15,0,43,3,12,0,6
+Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.model,Room,36,208,10,14,6,45,8,10,0,6
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.model,Hotel,2,46,1,3,1,10,1,4,0,3
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,hotelFromCSV,0,243,6,14,0,53,6,7,0,3
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,Exit,6,0,0,0,3,0,2,0,2,0
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,View,0,28,0,2,0,10,0,3,0,2
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,HotelSystem,111,0,11,0,37,0,12,0,3,0
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,Command,0,3,0,0,0,1,0,1,0,1
-Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,hotelToCSV,1,244,3,21,1,34,3,13,0,4
-Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,CheckIn,65,137,7,7,16,40,6,6,0,5
+Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,hotelToCSV,22,247,7,21,5,35,6,12,0,4
+Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,CheckIn,57,145,5,9,14,42,4,8,0,5
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,CheckOut,12,40,1,5,3,15,1,3,0,1
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,List,0,48,0,4,0,9,0,4,0,2
 Modul glowny aplikacji - klasa Main z metoda main,pl.edu.agh.kis.pz1.main.commands,Prices,0,52,0,4,0,9,0,4,0,2

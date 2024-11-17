@@ -87,7 +87,7 @@ import java.util.Scanner;
 
 <span class="fc" id="L88">                ArrayList&lt;Guest&gt; otherGuests = new ArrayList&lt;&gt;();</span>
 <span class="fc bfc" id="L89" title="All 2 branches covered.">                if (correctInfo(otherGuestsInfo)) {</span>
-<span class="fc" id="L90">                    String[] otherGuestsInfoArray = otherGuestsInfo.split(&quot;, &quot;);</span>
+<span class="fc" id="L90">                    String[] otherGuestsInfoArray = otherGuestsInfo.split(&quot;; &quot;);</span>
 <span class="fc bfc" id="L91" title="All 2 branches covered.">                    for (String otherGuest : otherGuestsInfoArray) {</span>
 <span class="fc" id="L92">                        String[] guestInfoArray = otherGuest.split(&quot; &quot;);</span>
 <span class="fc" id="L93">                        otherGuests.add(new Guest(guestInfoArray[0], guestInfoArray[1]));</span>

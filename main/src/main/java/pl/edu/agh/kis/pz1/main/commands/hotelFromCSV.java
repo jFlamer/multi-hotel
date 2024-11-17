@@ -87,7 +87,7 @@ public class hotelFromCSV extends Command {
 
                 ArrayList<Guest> otherGuests = new ArrayList<>();
                 if (correctInfo(otherGuestsInfo)) {
-                    String[] otherGuestsInfoArray = otherGuestsInfo.split(", ");
+                    String[] otherGuestsInfoArray = otherGuestsInfo.split("; ");
                     for (String otherGuest : otherGuestsInfoArray) {
                         String[] guestInfoArray = otherGuest.split(" ");
                         otherGuests.add(new Guest(guestInfoArray[0], guestInfoArray[1]));

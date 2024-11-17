@@ -64,8 +64,8 @@ public class CheckIn extends Command {
 <span class="fc" id="L64">        Scanner scanner = new Scanner(System.in);</span>
 <span class="fc" id="L65">        System.out.println(&quot;Provide name of guest &quot; + guestNumber + &quot;/&quot; + capacityOfRoom + &quot;: &quot;);</span>
 <span class="fc" id="L66">        String guestName = scanner.nextLine();</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (StringUtils.isEmpty(guestName)) {</span>
-<span class="nc" id="L68">            return null;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (StringUtils.isEmpty(guestName)) {</span>
+<span class="fc" id="L68">            return null;</span>
         }
 <span class="fc" id="L70">        System.out.println(&quot;Provide surname of guest &quot; + guestNumber + &quot;/&quot; + capacityOfRoom + &quot;: &quot;);</span>
 <span class="fc" id="L71">        String guestSurname = scanner.nextLine();</span>
@@ -86,8 +86,8 @@ public class CheckIn extends Command {
 <span class="fc" id="L86">        Scanner scanner = new Scanner(System.in);</span>
 <span class="fc" id="L87">        System.out.println(&quot;Date of check-in (YYYY-MM-DD): &quot;);</span>
 <span class="fc" id="L88">        String checkInDate = scanner.nextLine();</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        if (StringUtils.isEmpty(checkInDate)) {</span>
-<span class="nc" id="L90">            this.setCheckInTime(Instant.now().truncatedTo(ChronoUnit.DAYS));</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        if (StringUtils.isEmpty(checkInDate)) {</span>
+<span class="fc" id="L90">            this.setCheckInTime(Instant.now().truncatedTo(ChronoUnit.DAYS));</span>
         } else {
 <span class="fc" id="L92">            checkInDate +=  &quot;T00:00:00Z&quot;;</span>
 <span class="fc" id="L93">            this.setCheckInTime(Instant.parse(checkInDate));</span>
