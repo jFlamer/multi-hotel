@@ -29,14 +29,15 @@ Interact with the system by typing the corresponding number for an action.
 
 Example menu:
 ```
-1 - Show available rooms
-2 - Book a room
-3 - Check out a guest
-4 - View room details
-0 - Exit the program
+1. Check In - Use this command to check in a guest to a room.
+2. Check Out - Use this command to check out a guest from a room.
+3. Get from CSV - Load hotel data from a CSV file.
+4. Save to CSV - Save hotel data to a CSV file.
+5. List Rooms - Display a list of all rooms and their statuses.
+6. Prices - View room pricing information.
+7. View - View detailed information about a specific room.
+8. Exit - Exit application.
 ```
-
-*(The exact list of commands may vary depending on the implementation.)*
 
 ## 🏢 Hotel Layout
 
